@@ -1,0 +1,5 @@
+# ignore installed addons
+phantom_camera/**/*
+
+# exclude config files for installed addons
+!phantom_camera/plugin.cfg
