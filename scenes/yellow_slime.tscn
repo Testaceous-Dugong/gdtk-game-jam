@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://3fwdm7dck6yq"]
+
+[ext_resource type="PackedScene" uid="uid://ddmmpnx5pofbp" path="res://scenes/enemy.tscn" id="1_chrgk"]
+[ext_resource type="Texture2D" uid="uid://d030p2623ip80" path="res://assets/yellow_slime.png" id="2_kalvu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3hpd"]
+atlas = ExtResource("2_kalvu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0s33m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3hpd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Enemy" instance=ExtResource("1_chrgk")]
+max_health = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_0s33m")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcvhxwjfia4nu"]
+
+[ext_resource type="Script" path="res://scenes/chest.gd" id="1_6s3e2"]
+[ext_resource type="Texture2D" uid="uid://dsf3m8n23f3wf" path="res://assets/props.png" id="1_b1gvj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcim5"]
+atlas = ExtResource("1_b1gvj")
+region = Rect2(64, 176, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xubsq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcim5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Chest" type="Node2D"]
+script = ExtResource("1_6s3e2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xubsq")

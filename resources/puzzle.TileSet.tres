@@ -1,7 +1,18 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://ccs65fvhsl4f6"]
+[gd_resource type="TileSet" load_steps=10 format=3 uid="uid://ccs65fvhsl4f6"]
 
+[ext_resource type="PackedScene" uid="uid://1d22jkgxwvbu" path="res://scenes/player.tscn" id="1_3jaj6"]
 [ext_resource type="Texture2D" uid="uid://b50gpq726e53x" path="res://assets/terrain.png" id="1_km3wc"]
 [ext_resource type="Texture2D" uid="uid://h8l6w6pb4ohq" path="res://assets/player.png" id="2_4voo4"]
+[ext_resource type="PackedScene" uid="uid://dcvhxwjfia4nu" path="res://scenes/chest.tscn" id="2_krah8"]
+[ext_resource type="PackedScene" uid="uid://crxeos8q7fi1t" path="res://scenes/blue_slime.tscn" id="3_b0v7s"]
+[ext_resource type="PackedScene" uid="uid://3fwdm7dck6yq" path="res://scenes/yellow_slime.tscn" id="4_82gae"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_v134t"]
+resource_name = "entities"
+scenes/1/scene = ExtResource("1_3jaj6")
+scenes/2/scene = ExtResource("2_krah8")
+scenes/3/scene = ExtResource("3_b0v7s")
+scenes/4/scene = ExtResource("4_82gae")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3xkaj"]
 texture = ExtResource("1_km3wc")
@@ -338,3 +349,4 @@ custom_data_layer_4/name = "health"
 custom_data_layer_4/type = 2
 sources/3 = SubResource("TileSetAtlasSource_3xkaj")
 sources/4 = SubResource("TileSetAtlasSource_7em05")
+sources/0 = SubResource("TileSetScenesCollectionSource_v134t")
