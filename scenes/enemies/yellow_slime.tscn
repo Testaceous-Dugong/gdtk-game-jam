@@ -21,6 +21,8 @@ animations = [{
 }]
 
 [node name="Enemy" instance=ExtResource("1_chrgk")]
+ai_type = 3
+movement_type = 1
 max_health = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]

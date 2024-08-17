@@ -93,7 +93,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="Node2D" groups=["player"]]
 script = ExtResource("1_jg0ce")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

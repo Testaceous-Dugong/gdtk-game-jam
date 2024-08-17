@@ -22,10 +22,10 @@ var health: int:
 var allow_input = true
 
 func _enter_tree() -> void:
-	GlobalMessageBus.register_player.emit(self)
+	GlobalMessageBus.register_player.emit.call_deferred(self)
 
 func _exit_tree() -> void:
-	GlobalMessageBus.unregister_player.emit(self)
+	GlobalMessageBus.unregister_player.emit.call_deferred(self)
 
 func _ready() -> void:
 	health = max_health
@@ -90,8 +90,8 @@ func on_collision(entity: Node2D) -> bool:
 	return false
 
 
-func on_move(old_position: Vector2i, new_position: Vector2i) -> void:
-	pass
+func on_move(_old_position: Vector2i, _new_position: Vector2i) -> void:
+	GlobalMessageBus.advance_turn.emit()
 
 func end_game() -> void:
 	get_tree().reload_current_scene()

@@ -9,6 +9,7 @@ font_size = 8
 font_size = 8
 
 [node name="Enemy" type="Node2D"]
+process_priority = 10
 script = ExtResource("1_lk6xo")
 
 [node name="HealthDisplayAnchor" type="Marker2D" parent="."]

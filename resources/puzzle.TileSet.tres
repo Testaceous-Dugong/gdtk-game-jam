@@ -3,15 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://1d22jkgxwvbu" path="res://scenes/player.tscn" id="1_3jaj6"]
 [ext_resource type="Texture2D" uid="uid://b50gpq726e53x" path="res://assets/terrain.png" id="1_km3wc"]
 [ext_resource type="PackedScene" uid="uid://dcvhxwjfia4nu" path="res://scenes/chest.tscn" id="2_krah8"]
-[ext_resource type="PackedScene" uid="uid://crxeos8q7fi1t" path="res://scenes/blue_slime.tscn" id="3_b0v7s"]
-[ext_resource type="PackedScene" uid="uid://3fwdm7dck6yq" path="res://scenes/yellow_slime.tscn" id="4_82gae"]
+[ext_resource type="PackedScene" uid="uid://bmgw65kemv0t4" path="res://scenes/enemies/blue_slime.tscn" id="3_7wmix"]
+[ext_resource type="PackedScene" uid="uid://bgblwy6jnpiei" path="res://scenes/enemies/yellow_slime.tscn" id="4_qmtnb"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_v134t"]
 resource_name = "entities"
 scenes/1/scene = ExtResource("1_3jaj6")
 scenes/2/scene = ExtResource("2_krah8")
-scenes/3/scene = ExtResource("3_b0v7s")
-scenes/4/scene = ExtResource("4_82gae")
+scenes/5/scene = ExtResource("3_7wmix")
+scenes/6/scene = ExtResource("4_qmtnb")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3xkaj"]
 texture = ExtResource("1_km3wc")
