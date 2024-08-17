@@ -33,9 +33,7 @@ func move_entity(direction: Vector2i, entity: Node2D) -> void:
 		if local_to_map(child.position) != new_position:
 			continue
 
-		if entity.has_method(&"on_collision"):
-			entity.on_collision(child)
-		else:
+		if entity.has_method(&"on_collision") and not entity.on_collision(child):
 			return
 
 	var tile_data = get_cell_tile_data(new_position)

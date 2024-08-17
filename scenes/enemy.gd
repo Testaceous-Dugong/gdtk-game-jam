@@ -17,8 +17,7 @@ func apply_damage(damage: int) -> bool:
 		return true
 	health = clampi(health - damage, 0, max_health)
 	if health == 0:
-		# animation_player.play(&"death")
-		queue_free()
+		animation_player.play(&"death")
 		return true
 	return false
 

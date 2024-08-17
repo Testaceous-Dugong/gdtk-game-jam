@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://3fwdm7dck6yq"]
+[gd_scene load_steps=7 format=3 uid="uid://3fwdm7dck6yq"]
 
 [ext_resource type="PackedScene" uid="uid://ddmmpnx5pofbp" path="res://scenes/enemy.tscn" id="1_chrgk"]
 [ext_resource type="Texture2D" uid="uid://d030p2623ip80" path="res://assets/yellow_slime.png" id="2_kalvu"]
+[ext_resource type="Script" path="res://scripts/EntityAnimationPlayer.gd" id="3_85udv"]
+[ext_resource type="AnimationLibrary" uid="uid://bl7yuvqcq1ylr" path="res://resources/enemy.AnimationLibrary.tres" id="3_585is"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o3hpd"]
 atlas = ExtResource("2_kalvu")
@@ -25,3 +27,7 @@ max_health = 2
 sprite_frames = SubResource("SpriteFrames_0s33m")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": ExtResource("3_585is")
+}
+script = ExtResource("3_85udv")
