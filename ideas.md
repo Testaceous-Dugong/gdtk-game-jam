@@ -33,7 +33,16 @@
 
 - Have dandruff abilities to get through people trying to hose you down
 
+- Showerheads with legs and shampoo bottles as enemeis
+
+- Is this possible with our art abilities
+
 
 4. Fish monger factory sim
 
-- Built to Scale fish, Built to scale factory
+- Built to Scale fish, Built to Scale factory
+
+5. https://www.crazygames.com/game/grow-rpg
+
+6. Grid based movement puzzle
+- Move to tiles in the grid to upgrade
