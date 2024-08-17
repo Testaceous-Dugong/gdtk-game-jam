@@ -65,7 +65,6 @@ func on_turn_advanced() -> void:
 			assert(false, "Random AI not yet implemented")
 			return
 		AIType.CHASE_PLAYER:
-			print("hello")
 			assert(movement_type != MovementType.MANHATTAN, "Chase player AI does not work with Manhattan movement yet")
 			assert(players.size() == 1, "Chase player AI only works with one player")
 			var player = players.keys()[0]

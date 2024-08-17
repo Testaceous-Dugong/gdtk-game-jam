@@ -7,7 +7,7 @@ extends Node2D
 		assert(value < levels.size())
 		current_level = value
 		for child in get_children():
-			child.queue_free()
+			remove_child(child)
 
 		add_child(levels[current_level].instantiate())
 

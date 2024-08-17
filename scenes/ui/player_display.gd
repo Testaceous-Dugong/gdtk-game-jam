@@ -23,5 +23,8 @@ func on_player_added(player: Player) -> void:
 	player.power_level_changed.connect(player_display.set_power_level)
 
 func on_player_removed(player: Player) -> void:
+	print("hello")
+	var player_display = players[player]
+	remove_child(player_display)
 	players[player].queue_free()
 	players.erase(player)

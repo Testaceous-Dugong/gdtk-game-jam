@@ -20,7 +20,11 @@ func move_entity(direction: Vector2i, entity: Node2D) -> void:
 	var old_position = local_to_map(entity.position)
 	var new_position = old_position + direction
 
-	for child in get_children():
+	var children = get_children()
+
+	children.sort_custom(func(a, b): return a is Player and not b is Player)
+
+	for child in children:
 		if child == entity:
 			continue
 		if local_to_map(child.position) != new_position:
