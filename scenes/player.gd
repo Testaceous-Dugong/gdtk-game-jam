@@ -1,17 +1,36 @@
+class_name Player
 extends Node2D
 
 signal request_move(direction: Vector2i)
 
-@export var max_health: int = 3
-@export var power_level: int = 1
+signal health_changed(health: int)
+signal power_level_changed(power_level: int)
 
-@onready var health: int = max_health
+@export var max_health: int = 3
+@export var power_level: int = 1:
+	set(value):
+		power_level = value
+		power_level_changed.emit(power_level)
 
 @onready var animation_player = $AnimationPlayer
 
+var health: int:
+	set(value):
+		health = value
+		health_changed.emit(health)
+
 var allow_input = true
 
+func _enter_tree() -> void:
+	GlobalMessageBus.register_player.emit(self)
+
+func _exit_tree() -> void:
+	GlobalMessageBus.unregister_player.emit(self)
+
 func _ready() -> void:
+	health = max_health
+	power_level = power_level
+
 	GlobalMessageBus.pause_input.connect(set_allow_input.bind(false))
 	GlobalMessageBus.unpause_input.connect(set_allow_input.bind(true))
 
