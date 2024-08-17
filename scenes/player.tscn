@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://1d22jkgxwvbu"]
+[gd_scene load_steps=9 format=3 uid="uid://1d22jkgxwvbu"]
 
 [ext_resource type="Texture2D" uid="uid://h8l6w6pb4ohq" path="res://assets/player.png" id="1_388vq"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_jg0ce"]
+[ext_resource type="Script" path="res://scripts/EntityAnimationPlayer.gd" id="2_aep0u"]
 
 [sub_resource type="Animation" id="Animation_4ol1a"]
 length = 0.001
@@ -100,6 +101,7 @@ script = ExtResource("1_jg0ce")
 libraries = {
 "": SubResource("AnimationLibrary_gno08")
 }
+script = ExtResource("2_aep0u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_q7ogt")

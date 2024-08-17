@@ -11,3 +11,6 @@ func start_animation(_animation_name: StringName) -> void:
 
 func finish_animation(_animation_name: StringName) -> void:
 	GlobalMessageBus.unpause_input.emit()
+
+func advance_level() -> void:
+	GlobalMessageBus.advance_level.emit()

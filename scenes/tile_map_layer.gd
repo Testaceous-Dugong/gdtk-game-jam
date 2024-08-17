@@ -1,14 +1,7 @@
 extends TileMapLayer
 
-@onready var tile_health: Dictionary = {}
-
 
 func _ready() -> void:
-	for tile_position in get_used_cells():
-		var tile_data = get_cell_tile_data(tile_position)
-		if tile_data == null:
-			continue
-		tile_health[tile_position] = tile_data.get_custom_data(&"health")
 	connect_signals.call_deferred()
 
 func connect_signals() -> void:
@@ -49,28 +42,26 @@ func move_entity(direction: Vector2i, entity: Node2D) -> void:
 		return
 	
 	var power_level: int = tile_data.get_custom_data(&"power_level")
-	var health: int = tile_health.get(new_position, 0)
 
-	if health == 0 and power_level == 0:
+	if power_level != 0 and entity.has_method(&"apply_damage") and entity.apply_damage(power_level):
 		return
 
-	if entity.has_method(&"apply_damage") and entity.apply_damage(power_level):
-		return
-
-	if not entity.has_method(&"get_power_level"):
-		return
-	
-	var entity_power_level: int = entity.get_power_level()
-
-	if health <= entity_power_level:
-		set_entity_position(new_position, entity)
-		entity.on_move(old_position, new_position)
-	else:
-		tile_health[new_position] = health - entity_power_level
+	match tile_data.get_custom_data(&"health"):
+		1:
+			set_entity_position(new_position, entity)
+			entity.on_move(old_position, new_position)
+		var health when health > 0:
+			set_cell(
+				new_position,
+				get_cell_source_id(new_position),
+				Vector2i(
+					4 - (health - 1),
+					get_cell_atlas_coords(new_position).y
+				)
+			)
 
 
 func set_entity_position(tile_position: Vector2i, entity: Node2D) -> void:
-	tile_health.erase(tile_position)
 	if get_cell_tile_data(tile_position) != null:
 		erase_cell(tile_position)
 
