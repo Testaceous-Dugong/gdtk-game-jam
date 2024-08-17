@@ -38,7 +38,8 @@ func move_entity(direction: Vector2i, entity: Node2D) -> void:
 	var is_solid: bool = false if tile_data == null else tile_data.get_custom_data(&"is_solid")
 
 	if not is_solid:
-		set_entity_position(new_position, entity)
+		clear_cell(new_position)
+		entity.position = map_to_local(new_position)
 		entity.on_move(old_position, new_position)
 		return
 	
@@ -52,7 +53,7 @@ func move_entity(direction: Vector2i, entity: Node2D) -> void:
 
 	match tile_data.get_custom_data(&"health"):
 		1:
-			set_entity_position(new_position, entity)
+			clear_cell(new_position)
 			entity.on_move(old_position, new_position)
 		var health when health > 0:
 			set_cell(
@@ -65,8 +66,6 @@ func move_entity(direction: Vector2i, entity: Node2D) -> void:
 			)
 
 
-func set_entity_position(tile_position: Vector2i, entity: Node2D) -> void:
+func clear_cell(tile_position: Vector2i) -> void:
 	if get_cell_tile_data(tile_position) != null:
 		erase_cell(tile_position)
-
-	entity.position = map_to_local(tile_position)

@@ -27,6 +27,8 @@ var experience: int:
 			level += 1
 			experience %= level
 
+var previous_coords: Vector2i
+
 var allow_input = true
 
 func _enter_tree() -> void:
@@ -101,7 +103,8 @@ func on_collision(entity: Node2D) -> bool:
 	return false
 
 
-func on_move(_old_position: Vector2i, _new_position: Vector2i) -> void:
+func on_move(old_position: Vector2i, _new_position: Vector2i) -> void:
+	previous_coords = old_position
 	GlobalMessageBus.advance_turn.emit()
 
 func end_game() -> void:

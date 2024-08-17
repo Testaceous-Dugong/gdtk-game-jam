@@ -57,6 +57,7 @@ func _process(_delta: float) -> void:
 	has_attacked = false
 
 func on_turn_advanced() -> void:
+	assert(get_parent() is TileMapLayer, "Enemy must be a child of a TileMapLayer")
 	match ai_type:
 		AIType.STATIONARY:
 			return
@@ -68,16 +69,55 @@ func on_turn_advanced() -> void:
 			return
 		AIType.CHASE_PLAYER:
 			assert(movement_type != MovementType.MANHATTAN, "Chase player AI does not work with Manhattan movement yet")
+			var tile_map = get_parent() as TileMapLayer
+			assert(tile_map, "Enemy must be a child of a TileMapLayer")
 			assert(players.size() == 1, "Chase player AI only works with one player")
 			var player = players.keys()[0]
-			var direction = player.position - position
+			if not navigate_toward(tile_map.local_to_map(player.position)):
+				navigate_toward(player.previous_coords)
 
-			if is_zero_approx(direction.x):
-				request_move.emit(Vector2i(0, signi(direction.y)))
-			elif is_zero_approx(direction.y):
-				request_move.emit(Vector2i(signi(direction.x), 0))
-			else:
-				request_move.emit(Vector2i(signi(direction.x), signi(direction.y)))
+			
+func navigate_toward(target_position: Vector2i) -> bool:
+	var tile_map = get_parent() as TileMapLayer
+	assert(tile_map, "Enemy must be a child of a TileMapLayer")
+
+	var delta = target_position - tile_map.local_to_map(position)
+	var direction = Vector2i(signi(delta.x), signi(delta.y))
+
+	if direction.x == 0:
+		request_move.emit(Vector2i(0, direction.y))
+		return true
+	if direction.y == 0:
+		request_move.emit(Vector2i(direction.x, 0))
+		return true
+
+	var current_tile_coord = tile_map.local_to_map(position)
+	var is_diagonal_clear = tile_map.get_cell_tile_data(current_tile_coord + direction) == null
+	if not is_diagonal_clear:
+		if absf(delta.x) > absf(delta.y):
+			request_move.emit(Vector2i(direction.x, 0))
+		elif absf(delta.y) > absf(delta.x):
+			request_move.emit(Vector2i(0, direction.y))
+		else:
+			request_move.emit(direction)
+		return true
+
+	var is_vertical_clear = tile_map.get_cell_tile_data(current_tile_coord + Vector2i(0, direction.y)) == null
+	if is_vertical_clear:
+		request_move.emit(direction)
+		return true
+
+	var is_horizontal_clear = tile_map.get_cell_tile_data(current_tile_coord + Vector2i(direction.x, 0)) == null
+	if is_horizontal_clear:
+		request_move.emit(direction)
+		return true
+
+	if absf(delta.x) > absf(delta.y):
+		request_move.emit(Vector2i(direction.x, 0))
+	elif absf(delta.y) > absf(delta.x):
+		request_move.emit(Vector2i(0, direction.y))
+
+	return false
 
 func get_power_level() -> int:
 	return power_level
@@ -94,15 +134,16 @@ func apply_damage(damage: int) -> bool:
 		return true
 	return false
 
-func on_collision(entity: Node2D) -> void:
+func on_collision(entity: Node2D) -> bool:
 	if has_attacked and entity is Player:
-		return
+		return false
 	
-	if entity.has_method(&"apply_damage"):
-		entity.apply_damage(power_level)
+	var should_move = entity.has_method(&"apply_damage") and entity.apply_damage(get_power_level())
 	
 	if entity.has_method(&"get_power_level"):
 		apply_damage(entity.get_power_level())
+
+	return should_move
 
 
 func on_move(old_position: Vector2i, new_position: Vector2i) -> void:
