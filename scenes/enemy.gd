@@ -3,11 +3,25 @@ extends Node2D
 signal request_move(direction: Vector2i)
 
 @export var max_health: int = 1
-@export var power_level: int = 1
 
-@onready var health: int = max_health
+@export var power_level: int = 1:
+	set(value):
+		power_level = value
+		power_level_display.text = "⚔️".repeat(power_level)
+
+@onready var health: int:
+	set(value):
+		health = value
+		health_display.text = "❤️".repeat(health)
 
 @onready var animation_player = $AnimationPlayer
+
+@onready var health_display = $HealthDisplayAnchor/HealthDisplay
+@onready var power_level_display = $PowerDisplayAnchor/PowerDisplay
+
+func _ready() -> void:
+	health = max_health
+	power_level = power_level
 
 func get_power_level() -> int:
 	return power_level

@@ -1,8 +1,7 @@
-[gd_resource type="TileSet" load_steps=10 format=3 uid="uid://ccs65fvhsl4f6"]
+[gd_resource type="TileSet" load_steps=8 format=3 uid="uid://ccs65fvhsl4f6"]
 
 [ext_resource type="PackedScene" uid="uid://1d22jkgxwvbu" path="res://scenes/player.tscn" id="1_3jaj6"]
 [ext_resource type="Texture2D" uid="uid://b50gpq726e53x" path="res://assets/terrain.png" id="1_km3wc"]
-[ext_resource type="Texture2D" uid="uid://h8l6w6pb4ohq" path="res://assets/player.png" id="2_4voo4"]
 [ext_resource type="PackedScene" uid="uid://dcvhxwjfia4nu" path="res://scenes/chest.tscn" id="2_krah8"]
 [ext_resource type="PackedScene" uid="uid://crxeos8q7fi1t" path="res://scenes/blue_slime.tscn" id="3_b0v7s"]
 [ext_resource type="PackedScene" uid="uid://3fwdm7dck6yq" path="res://scenes/yellow_slime.tscn" id="4_82gae"]
@@ -184,37 +183,91 @@ texture = ExtResource("1_km3wc")
 5:24/0 = 0
 6:24/0 = 0
 0:25/0 = 0
+0:25/0/terrain_set = 0
+0:25/0/terrain = 0
+0:25/0/terrains_peering_bit/right_side = 0
+0:25/0/terrains_peering_bit/bottom_side = 0
 0:25/0/custom_data_0 = true
 1:25/0 = 0
+1:25/0/terrain_set = 0
+1:25/0/terrain = 0
+1:25/0/terrains_peering_bit/bottom_side = 0
 1:25/0/custom_data_0 = true
 2:25/0 = 0
+2:25/0/terrain_set = 0
+2:25/0/terrain = 0
+2:25/0/terrains_peering_bit/bottom_side = 0
+2:25/0/terrains_peering_bit/left_side = 0
 2:25/0/custom_data_0 = true
 3:25/0 = 0
 4:25/0 = 0
 0:26/0 = 0
+0:26/0/terrain_set = 0
+0:26/0/terrain = 0
+0:26/0/terrains_peering_bit/right_side = 0
+0:26/0/terrains_peering_bit/bottom_side = 0
+0:26/0/terrains_peering_bit/top_side = 0
 0:26/0/custom_data_0 = true
 1:26/0 = 0
+1:26/0/terrain_set = 0
+1:26/0/terrain = 0
+1:26/0/terrains_peering_bit/top_left_corner = 0
+1:26/0/terrains_peering_bit/top_side = 0
+1:26/0/terrains_peering_bit/top_right_corner = 0
 1:26/0/custom_data_0 = true
 2:26/0 = 0
+2:26/0/terrain_set = 0
+2:26/0/terrain = 0
+2:26/0/terrains_peering_bit/bottom_side = 0
+2:26/0/terrains_peering_bit/left_side = 0
+2:26/0/terrains_peering_bit/top_side = 0
 2:26/0/custom_data_0 = true
 3:26/0 = 0
 4:26/0 = 0
 5:26/0 = 0
 6:26/0 = 0
 0:27/0 = 0
+0:27/0/terrain_set = 0
+0:27/0/terrain = 0
+0:27/0/terrains_peering_bit/bottom_side = 0
+0:27/0/terrains_peering_bit/top_side = 0
 0:27/0/custom_data_0 = true
 1:27/0 = 0
+1:27/0/terrain_set = 0
+1:27/0/terrain = 0
+1:27/0/terrains_peering_bit/bottom_side = 0
 1:27/0/custom_data_0 = true
 2:27/0 = 0
+2:27/0/terrain_set = 0
+2:27/0/terrain = 0
+2:27/0/terrains_peering_bit/bottom_side = 0
+2:27/0/terrains_peering_bit/top_side = 0
 2:27/0/custom_data_0 = true
 3:27/0 = 0
 4:27/0 = 0
 5:27/0 = 0
 0:28/0 = 0
+0:28/0/terrain_set = 0
+0:28/0/terrain = 0
+0:28/0/terrains_peering_bit/right_side = 0
+0:28/0/terrains_peering_bit/top_side = 0
+0:28/0/terrains_peering_bit/top_right_corner = 0
 0:28/0/custom_data_0 = true
 1:28/0 = 0
+1:28/0/terrain_set = 0
+1:28/0/terrain = 0
+1:28/0/terrains_peering_bit/right_side = 0
+1:28/0/terrains_peering_bit/left_side = 0
+1:28/0/terrains_peering_bit/top_left_corner = 0
+1:28/0/terrains_peering_bit/top_side = 0
+1:28/0/terrains_peering_bit/top_right_corner = 0
 1:28/0/custom_data_0 = true
 2:28/0 = 0
+2:28/0/terrain_set = 0
+2:28/0/terrain = 0
+2:28/0/terrains_peering_bit/left_side = 0
+2:28/0/terrains_peering_bit/top_left_corner = 0
+2:28/0/terrains_peering_bit/top_side = 0
 2:28/0/custom_data_0 = true
 3:28/0 = 0
 4:28/0 = 0
@@ -317,26 +370,10 @@ texture = ExtResource("1_km3wc")
 5:44/0 = 0
 6:44/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7em05"]
-texture = ExtResource("2_4voo4")
-0:0/0 = 0
-1:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-1:2/0/custom_data_0 = true
-1:2/0/custom_data_1 = true
-1:2/0/custom_data_2 = 1
-1:2/0/custom_data_4 = 1
-0:3/0 = 0
-1:3/0 = 0
-1:3/0/custom_data_0 = true
-1:3/0/custom_data_1 = true
-1:3/0/custom_data_2 = 1
-1:3/0/custom_data_4 = 2
-
 [resource]
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "walls"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 custom_data_layer_0/name = "is_solid"
 custom_data_layer_0/type = 1
 custom_data_layer_1/name = "is_enemy"
@@ -348,5 +385,4 @@ custom_data_layer_3/type = 2
 custom_data_layer_4/name = "health"
 custom_data_layer_4/type = 2
 sources/3 = SubResource("TileSetAtlasSource_3xkaj")
-sources/4 = SubResource("TileSetAtlasSource_7em05")
 sources/0 = SubResource("TileSetScenesCollectionSource_v134t")
