@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://3fwdm7dck6yq"]
+[gd_scene load_steps=7 format=3 uid="uid://bgblwy6jnpiei"]
 
-[ext_resource type="PackedScene" uid="uid://ddmmpnx5pofbp" path="res://scenes/enemy.tscn" id="1_chrgk"]
+[ext_resource type="PackedScene" uid="uid://7mkecy11cmva" path="res://scenes/enemies/enemy.tscn" id="1_chrgk"]
 [ext_resource type="Texture2D" uid="uid://d030p2623ip80" path="res://assets/yellow_slime.png" id="2_kalvu"]
 [ext_resource type="Script" path="res://scripts/EntityAnimationPlayer.gd" id="3_85udv"]
 [ext_resource type="AnimationLibrary" uid="uid://bl7yuvqcq1ylr" path="res://resources/enemy.AnimationLibrary.tres" id="3_585is"]

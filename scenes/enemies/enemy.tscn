@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddmmpnx5pofbp"]
+[gd_scene load_steps=4 format=3 uid="uid://7mkecy11cmva"]
 
-[ext_resource type="Script" path="res://scenes/enemy.gd" id="1_t0shg"]
+[ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_lk6xo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_suat3"]
 font_size = 8
@@ -9,7 +9,7 @@ font_size = 8
 font_size = 8
 
 [node name="Enemy" type="Node2D"]
-script = ExtResource("1_t0shg")
+script = ExtResource("1_lk6xo")
 
 [node name="HealthDisplayAnchor" type="Marker2D" parent="."]
 position = Vector2(0.5, -16)
@@ -37,6 +37,6 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
-text = "hello"
+text = "⚔️"
 label_settings = SubResource("LabelSettings_us8xu")
 horizontal_alignment = 1
