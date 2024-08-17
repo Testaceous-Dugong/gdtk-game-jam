@@ -7,7 +7,7 @@ signal health_changed(health: int)
 signal power_level_changed(power_level: int)
 
 @export var max_health: int = 3
-@export var power_level: int = 1:
+@export var power_level: int = 0:
 	set(value):
 		power_level = value
 		power_level_changed.emit(power_level)
@@ -18,6 +18,14 @@ var health: int:
 	set(value):
 		health = value
 		health_changed.emit(health)
+
+var level: int = 1
+var experience: int:
+	set(value):
+		experience = value
+		if experience >= level + 1:
+			level += 1
+			experience %= level
 
 var allow_input = true
 
@@ -47,6 +55,10 @@ func _process(_delta: float) -> void:
 	elif Input.is_action_just_pressed(&"move_right"):
 		request_move.emit(Vector2i.RIGHT)
 
+
+func get_power_level() -> int:
+	return power_level + level
+
 func set_allow_input(value: bool) -> void:
 	allow_input = value
 
@@ -54,23 +66,20 @@ func apply_power_up(power_up: PowerUp) -> void:
 	var stats = EntityStats.new()
 	stats.health = health
 	stats.max_health = max_health
-	stats.power_level = power_level
+	stats.power_level = get_power_level()
+	stats.experience = experience
 
 	var result = power_up.apply_powerup(stats)
 
 	health = result.health
 	max_health = result.max_health
-	power_level = result.power_level
+	power_level = result.power_level - level
+	experience = result.experience
 
 	power_up.queue_free()
 
-
-func get_power_level() -> int:
-	return power_level
-
 func apply_damage(damage: int) -> bool:
-	if health == 0:
-		return true
+	assert(health > 0, "health must be greater than 0")
 	health = clampi(health - damage, 0, max_health)
 	if health == 0:
 		animation_player.play(&"death")
@@ -82,11 +91,13 @@ func on_collision(entity: Node2D) -> bool:
 		apply_power_up(entity)
 		return true
 	
-	if entity.has_method(&"get_power_level") and apply_damage(entity.get_power_level()):
+	var was_killed = entity.has_method(&"get_power_level") and apply_damage(entity.get_power_level())
+	if was_killed:
 		return false
 	
-	if entity.has_method(&"apply_damage"):
-		entity.apply_damage(power_level)
+	var killed_entity = entity.has_method(&"apply_damage") and entity.apply_damage(get_power_level())
+	if killed_entity and entity.has_method(&"get_experience_value"):
+		experience += entity.get_experience_value()
 	return false
 
 

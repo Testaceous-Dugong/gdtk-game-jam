@@ -24,6 +24,8 @@ signal request_move(direction: Vector2i)
 		power_level = value
 		power_level_display.text = "⚔️".repeat(power_level)
 
+@export var experience_value: int = 1
+
 var health: int:
 	set(value):
 		health = value
@@ -80,10 +82,12 @@ func on_turn_advanced() -> void:
 func get_power_level() -> int:
 	return power_level
 
+func get_experience_value() -> int:
+	return experience_value
+
 func apply_damage(damage: int) -> bool:
+	assert(health > 0, "health must be greater than 0")
 	has_attacked = true
-	if health == 0:
-		return true
 	health = clampi(health - damage, 0, max_health)
 	if health == 0:
 		animation_player.play(&"death")
@@ -91,13 +95,14 @@ func apply_damage(damage: int) -> bool:
 	return false
 
 func on_collision(entity: Node2D) -> void:
-	var player = entity as Player
-	if player == null:
-		return
-	if has_attacked:
+	if has_attacked and entity is Player:
 		return
 	
-	player.apply_damage(power_level)
+	if entity.has_method(&"apply_damage"):
+		entity.apply_damage(power_level)
+	
+	if entity.has_method(&"get_power_level"):
+		apply_damage(entity.get_power_level())
 
 
 func on_move(old_position: Vector2i, new_position: Vector2i) -> void:
