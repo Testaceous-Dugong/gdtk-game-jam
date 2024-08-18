@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsk1sj6po13id"]
+
+[ext_resource type="Texture2D" uid="uid://3jbfr0c2fhpo" path="res://assets/icons.png" id="1_2tyg0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1im7h"]
+atlas = ExtResource("1_2tyg0")
+region = Rect2(0, 24, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j27k8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1im7h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="EmptyHeartIcon" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_j27k8")
+centered = false

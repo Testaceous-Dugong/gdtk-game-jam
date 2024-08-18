@@ -1,49 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://7mkecy11cmva"]
+[gd_scene load_steps=9 format=3 uid="uid://7mkecy11cmva"]
 
 [ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_lk6xo"]
 [ext_resource type="Script" path="res://scenes/scripts/AttackAnimator.gd" id="2_7ovb1"]
 [ext_resource type="Script" path="res://scenes/scripts/MoveAnimator.gd" id="3_jk45j"]
 [ext_resource type="AudioStream" uid="uid://pe32qrjjdbgj" path="res://assets/sfx/move.wav" id="4_o51bs"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_suat3"]
-font_size = 8
-
-[sub_resource type="LabelSettings" id="LabelSettings_us8xu"]
-font_size = 8
+[ext_resource type="Script" path="res://scenes/ui/stat_display.gd" id="5_qo5km"]
+[ext_resource type="PackedScene" uid="uid://b0efdhxl42xu5" path="res://scenes/ui/sword_icon.tscn" id="6_6t64y"]
+[ext_resource type="PackedScene" uid="uid://cfs5n6fme8yk3" path="res://scenes/ui/heart_icon.tscn" id="6_masa2"]
+[ext_resource type="PackedScene" uid="uid://dsk1sj6po13id" path="res://scenes/ui/empty_heart_icon.tscn" id="8_aceof"]
 
 [node name="Enemy" type="Node2D"]
 process_priority = 10
 script = ExtResource("1_lk6xo")
-
-[node name="HealthDisplayAnchor" type="Marker2D" parent="."]
-position = Vector2(0.5, -16)
-
-[node name="HealthDisplay" type="Label" parent="HealthDisplayAnchor"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
-grow_horizontal = 2
-text = "❤️"
-label_settings = SubResource("LabelSettings_suat3")
-horizontal_alignment = 1
-
-[node name="PowerDisplayAnchor" type="Marker2D" parent="."]
-position = Vector2(0.5, 8)
-
-[node name="PowerDisplay" type="Label" parent="PowerDisplayAnchor"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
-grow_horizontal = 2
-text = "⚔️"
-label_settings = SubResource("LabelSettings_us8xu")
-horizontal_alignment = 1
 
 [node name="AttackAnimator" type="Node2D" parent="."]
 script = ExtResource("2_7ovb1")
@@ -54,3 +22,30 @@ animation_target = NodePath("..")
 
 [node name="MoveAudioSteamPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_o51bs")
+
+[node name="PowerDisplay" type="HBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 8.0
+offset_right = 20.0
+offset_bottom = 31.0
+grow_horizontal = 2
+alignment = 1
+script = ExtResource("5_qo5km")
+stat_icon = ExtResource("6_6t64y")
+
+[node name="HealthDisplay" type="HBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -16.0
+offset_right = 20.0
+offset_bottom = 7.0
+grow_horizontal = 2
+alignment = 1
+script = ExtResource("5_qo5km")
+stat_icon = ExtResource("6_masa2")
+missing_stat_icon = ExtResource("8_aceof")

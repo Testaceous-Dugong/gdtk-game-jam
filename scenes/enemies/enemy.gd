@@ -18,20 +18,24 @@ signal turn_finished()
 @export var ai_type: AIType = AIType.STATIONARY
 @export var movement_type: MovementType = MovementType.MANHATTAN
 
-@export var max_health: int = 1
+@export var max_health: int = 1:
+	set(value):
+		max_health = value
+		if health_display:
+			health_display.max_stat_value = max_health
 
 @export var power_level: int = 1:
 	set(value):
 		power_level = value
 		if power_level_display:
-			power_level_display.text = "⚔️".repeat(power_level)
+			power_level_display.stat_value = power_level
 
 @export var experience_value: int = 1
 
 var health: int:
 	set(value):
 		health = value
-		health_display.text = "❤️".repeat(health)
+		health_display.stat_value = health
 
 var players = {}
 
@@ -42,12 +46,13 @@ var has_attacked = false
 @onready var attack_animator = $AttackAnimator as AttackAnimator
 @onready var move_animator = $MoveAnimator as MoveAnimator
 
-@onready var health_display = $HealthDisplayAnchor/HealthDisplay
-@onready var power_level_display = $PowerDisplayAnchor/PowerDisplay
+@onready var health_display = $HealthDisplay as StatDisplay
+@onready var power_level_display = $PowerDisplay as StatDisplay
 
 func _ready() -> void:
-	health = max_health
 	power_level = power_level
+	max_health = max_health
+	health = max_health
 
 	GlobalMessageBus.register_player.connect(on_player_added)
 	GlobalMessageBus.unregister_player.connect(on_player_removed)
