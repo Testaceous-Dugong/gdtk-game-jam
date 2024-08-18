@@ -125,8 +125,10 @@ func navigate_toward(target_position: Vector2i) -> bool:
 		request_move.emit(Vector2i(direction.x, 0))
 	elif absf(delta.y) > absf(delta.x):
 		request_move.emit(Vector2i(0, direction.y))
+	else:
+		return false
 
-	return false
+	return true
 
 func get_power_level() -> int:
 	return power_level
