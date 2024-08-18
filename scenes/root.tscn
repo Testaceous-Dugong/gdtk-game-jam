@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://biac53a1bmduu" path="res://scenes/levels/level3.tscn" id="4_jne5q"]
 [ext_resource type="PackedScene" uid="uid://cxgewsw17s7wg" path="res://scenes/ui/root.tscn" id="4_mxwsy"]
 
-[node name="Root" type="Node"]
+[node name="Root2" type="Node"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)

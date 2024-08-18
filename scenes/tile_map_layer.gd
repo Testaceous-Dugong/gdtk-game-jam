@@ -1,13 +1,46 @@
 extends TileMapLayer
 
+var running = true
 
 func _ready() -> void:
 	connect_signals.call_deferred()
+
+	GlobalMessageBus.advance_turn.connect(advance_turn)
+	GlobalMessageBus.advance_level.connect(set_is_running.bind(false))
+	GlobalMessageBus.restart_level.connect(set_is_running.bind(false))
+	GlobalMessageBus.set_level.connect(set_is_running.bind(false))
 
 func connect_signals() -> void:
 	for child in get_children():
 		if child.has_signal(&"request_move"):
 			child.request_move.connect(move_entity.bind(child))
+
+func get_sorted_children() -> Array[Node]:
+	var children = get_children()
+
+	children.sort_custom(func(a: Node, b: Node):
+		if a is Player and b is Player:
+			return true
+		return a.process_priority < b.process_priority
+	)
+
+	return children
+
+func set_is_running(value: bool) -> void:
+	running = value
+
+func advance_turn() -> void:
+	if not running:
+		return
+	const TURN_DURATION = 0.05
+	await get_tree().create_timer(TURN_DURATION).timeout
+	for child in get_sorted_children():
+		if not child.has_method(&"take_turn"):
+			continue
+		child.take_turn()
+		assert(child.has_signal(&"turn_finished"), "entity must have turn_finished signal")
+		await child.turn_finished
+	GlobalMessageBus.unpause_input.emit()
 
 func move_entity(direction: Vector2i, entity: Node2D) -> void:
 	assert(entity != null, "entity must not be null")
@@ -20,11 +53,8 @@ func move_entity(direction: Vector2i, entity: Node2D) -> void:
 	var old_position = local_to_map(entity.position)
 	var new_position = old_position + direction
 
-	var children = get_children()
 
-	children.sort_custom(func(a, b): return a is Player and not b is Player)
-
-	for child in children:
+	for child in get_sorted_children():
 		if child == entity:
 			continue
 		if local_to_map(child.position) != new_position:
@@ -39,22 +69,18 @@ func move_entity(direction: Vector2i, entity: Node2D) -> void:
 
 	if not is_solid:
 		clear_cell(new_position)
-		entity.position = map_to_local(new_position)
-		entity.on_move(old_position, new_position)
+		await entity.on_move(map_to_local(new_position))
 		return
 	
 	if tile_data == null:
 		return
-	
-	var power_level: int = tile_data.get_custom_data(&"power_level")
 
-	if power_level != 0 and entity.has_method(&"apply_damage") and entity.apply_damage(power_level):
-		return
-
+	if entity.has_method(&"on_attack_wall"):
+		await entity.on_attack_wall(direction)
 	match tile_data.get_custom_data(&"health"):
 		1:
 			clear_cell(new_position)
-			entity.on_move(old_position, new_position)
+			await entity.on_move(map_to_local(new_position))
 		var health when health > 0:
 			set_cell(
 				new_position,
@@ -67,5 +93,6 @@ func move_entity(direction: Vector2i, entity: Node2D) -> void:
 
 
 func clear_cell(tile_position: Vector2i) -> void:
-	if get_cell_tile_data(tile_position) != null:
-		erase_cell(tile_position)
+	if get_cell_tile_data(tile_position) == null:
+		return
+	erase_cell(tile_position)

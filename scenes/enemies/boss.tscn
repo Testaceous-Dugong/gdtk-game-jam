@@ -22,12 +22,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Enemy" instance=ExtResource("1_chrgk")]
+[node name="Boss" instance=ExtResource("1_chrgk")]
+process_priority = 20
+y_sort_enabled = true
 script = ExtResource("2_4alkt")
 ai_type = 3
 movement_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_0s33m")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
@@ -39,6 +42,9 @@ script = ExtResource("3_85udv")
 [node name="LevelAdvancer" type="Node" parent="." index="4"]
 script = ExtResource("5_fmy1x")
 advance_animation_name = &"death"
+
+[node name="AttackAnimator" parent="." index="5"]
+animation_target = NodePath("../AnimatedSprite2D")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="on_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="LevelAdvancer" method="on_animation_finished"]

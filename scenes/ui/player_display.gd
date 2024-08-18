@@ -1,7 +1,7 @@
 extends Container
 
-const PlayerDisplay = preload("res://scenes/ui/player.gd")
-const PlayerDisplayScene = preload("res://scenes/ui/player.tscn")
+const PlayerDisplay = preload("res://scenes/ui/player_stats.gd")
+const PlayerDisplayScene = preload("res://scenes/ui/player_stats.tscn")
 
 var players: Dictionary = {}
 

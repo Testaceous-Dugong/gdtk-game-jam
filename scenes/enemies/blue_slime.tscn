@@ -21,6 +21,7 @@ animations = [{
 }]
 
 [node name="BlueSlime" instance=ExtResource("1_cyoe0")]
+y_sort_enabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
 libraries = {
@@ -29,6 +30,10 @@ libraries = {
 script = ExtResource("2_28xuu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_vhjiv")
+
+[node name="AttackAnimator" parent="." index="4"]
+animation_target = NodePath("../AnimatedSprite2D")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="on_animation_finished"]

@@ -12,3 +12,17 @@ signal advance_level()
 signal restart_level()
 
 signal set_level(index: int)
+
+func _ready() -> void:
+	assert(register_player)
+	assert(unregister_player)
+
+	assert(pause_input)
+	assert(unpause_input)
+
+	assert(advance_turn)
+	assert(advance_level)
+
+	assert(restart_level)
+
+	assert(set_level)

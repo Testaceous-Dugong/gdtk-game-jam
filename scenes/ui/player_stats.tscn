@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bnacuw6ij85xw"]
 
-[ext_resource type="Script" path="res://scenes/ui/player.gd" id="1_tnj8l"]
+[ext_resource type="Script" path="res://scenes/ui/player_stats.gd" id="1_abv0g"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cuily"]
 font_size = 32
@@ -16,7 +16,7 @@ offset_right = 1.0
 offset_bottom = 98.0
 grow_vertical = 2
 alignment = 2
-script = ExtResource("1_tnj8l")
+script = ExtResource("1_abv0g")
 
 [node name="HealthDisplay" type="Label" parent="."]
 layout_mode = 2

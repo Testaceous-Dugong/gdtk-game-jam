@@ -13,7 +13,9 @@ signal experience_changed(level: int, experience: int)
 		power_level = value
 		power_level_changed.emit(power_level)
 
-@onready var animation_player = $AnimationPlayer
+@onready var animation_player = $AnimationPlayer as AnimationPlayer
+@onready var attack_animator = $AttackAnimator as AttackAnimator
+@onready var move_animator = $MoveAnimator as MoveAnimator
 
 var health: int:
 	set(value):
@@ -32,7 +34,7 @@ var experience: int:
 			experience %= level
 		experience_changed.emit(level, experience)
 
-var previous_coords: Vector2i
+var previous_position: Vector2i
 
 var allow_input = true
 
@@ -46,12 +48,14 @@ func _ready() -> void:
 	health = max_health
 	power_level = power_level
 
+	request_move.connect(func(_direction): GlobalMessageBus.pause_input.emit())
+
 	GlobalMessageBus.pause_input.connect(set_allow_input.bind(false))
 	GlobalMessageBus.unpause_input.connect(set_allow_input.bind(true))
 
 
 func _process(_delta: float) -> void:
-	if not allow_input:
+	if not allow_input or health == 0:
 		return
 	if Input.is_action_just_pressed(&"move_up"):
 		request_move.emit(Vector2i.UP)
@@ -61,19 +65,32 @@ func _process(_delta: float) -> void:
 		request_move.emit(Vector2i.LEFT)
 	elif Input.is_action_just_pressed(&"move_right"):
 		request_move.emit(Vector2i.RIGHT)
+	else:
+		return
+	
+	print("player turn")
 
 
 func get_power_level() -> int:
 	return power_level
 
 func set_allow_input(value: bool) -> void:
-	if value:
-		allow_input = value
-	else:
-		allow_input = value
+	allow_input = value
 
 func apply_power_up(power_up: PowerUp) -> void:
-	health = max_health
+	var stats = EntityStats.new()
+	stats.max_health = max_health
+	stats.health = max_health
+	stats.power_level = power_level
+	stats.experience = experience
+
+	var result = power_up.apply_powerup(stats)
+
+	max_health = result.max_health
+	health = result.health
+	power_level = result.power_level
+	experience = result.experience
+
 	power_up.queue_free()
 
 func process_attack(incoming_damage: int, inflict_damage: Callable) -> bool:
@@ -96,10 +113,19 @@ func on_collision(entity: Node2D) -> bool:
 		apply_power_up(entity)
 		return true
 	
+	attack_animator.target = (entity.position - position).normalized()
+	animation_player.play(&"attack")
+	var finished_animation = await animation_player.animation_finished
+	assert(finished_animation == &"attack")
+	
 	if not entity.has_method(&"process_attack"):
 		return false
 	
 	var killed_entity = entity.process_attack(get_power_level(), apply_damage)
+
+	if health == 0:
+		return false
+
 	if not killed_entity:
 		GlobalMessageBus.advance_turn.emit()
 		return false
@@ -114,8 +140,25 @@ func on_collision(entity: Node2D) -> bool:
 	return false
 
 
-func on_move(old_position: Vector2i, _new_position: Vector2i) -> void:
-	previous_coords = old_position
+func on_move(new_position: Vector2) -> void:
+	previous_position = position
+
+	move_animator.start_position = position
+	move_animator.target_position = new_position
+
+	animation_player.play(&"move")
+	var finished_animation = await animation_player.animation_finished
+	assert(finished_animation == &"move")
+
+	GlobalMessageBus.advance_turn.emit()
+
+func on_attack_wall(direction: Vector2i) -> void:
+	attack_animator.target = Vector2(direction).normalized()
+
+	animation_player.play(&"attack")
+	var finished_animation = await animation_player.animation_finished
+	assert(finished_animation == &"attack")
+
 	GlobalMessageBus.advance_turn.emit()
 
 func end_game() -> void:

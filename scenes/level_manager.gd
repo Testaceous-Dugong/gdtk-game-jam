@@ -8,6 +8,7 @@ extends Node2D
 		current_level = value
 		for child in get_children():
 			remove_child(child)
+			child.queue_free()
 
 		add_child(levels[current_level].instantiate())
 

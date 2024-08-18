@@ -13,6 +13,7 @@ enum MovementType {
 }
 
 signal request_move(direction: Vector2i)
+signal turn_finished()
 
 @export var ai_type: AIType = AIType.STATIONARY
 @export var movement_type: MovementType = MovementType.MANHATTAN
@@ -35,17 +36,14 @@ var health: int:
 var players = {}
 
 var has_attacked = false
-var should_wait = false
+
 
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
+@onready var attack_animator = $AttackAnimator as AttackAnimator
+@onready var move_animator = $MoveAnimator as MoveAnimator
 
 @onready var health_display = $HealthDisplayAnchor/HealthDisplay
 @onready var power_level_display = $PowerDisplayAnchor/PowerDisplay
-
-func _exit_tree() -> void:
-	GlobalMessageBus.register_player.disconnect(on_player_added)
-	GlobalMessageBus.unregister_player.disconnect(on_player_removed)
-	GlobalMessageBus.advance_turn.disconnect(on_turn_advanced)
 
 func _ready() -> void:
 	health = max_health
@@ -53,17 +51,20 @@ func _ready() -> void:
 
 	GlobalMessageBus.register_player.connect(on_player_added)
 	GlobalMessageBus.unregister_player.connect(on_player_removed)
-	GlobalMessageBus.advance_turn.connect(on_turn_advanced)
 
-	GlobalMessageBus.pause_input.connect(set_should_wait.bind(true))
-	GlobalMessageBus.unpause_input.connect(set_should_wait.bind(false))
+	GlobalMessageBus.unpause_input.connect(reset_has_attacked)
 
-func _process(_delta: float) -> void:
+func reset_has_attacked() -> void:
 	has_attacked = false
 
-func on_turn_advanced() -> void:
+func take_turn() -> void:
+	print("enemy turn %s" % name)
+	if health == 0:
+		turn_finished.emit.call_deferred()
+		return
 	match ai_type:
 		AIType.STATIONARY:
+			turn_finished.emit.call_deferred()
 			return
 		AIType.PACE:
 			assert(false, "Pace AI not yet implemented")
@@ -78,7 +79,7 @@ func on_turn_advanced() -> void:
 			assert(players.size() == 1, "Chase player AI only works with one player")
 			var player = players.keys()[0]
 			if not navigate_toward(tile_map.local_to_map(player.position)):
-				navigate_toward(player.previous_coords)
+				navigate_toward(tile_map.local_to_map(player.previous_position))
 
 			
 func navigate_toward(target_position: Vector2i) -> bool:
@@ -136,9 +137,6 @@ func get_power_level() -> int:
 func get_experience_value() -> int:
 	return experience_value
 
-func set_should_wait(value: bool) -> void:
-	should_wait = value
-
 func apply_damage(damage: int) -> bool:
 	assert(health > 0, "health must be greater than 0")
 	health = clampi(health - damage, 0, max_health)
@@ -146,6 +144,21 @@ func apply_damage(damage: int) -> bool:
 		animation_player.play(&"death")
 		return true
 	return false
+
+
+func apply_power_up(power_up: PowerUp) -> void:
+	var stats = EntityStats.new()
+	stats.max_health = max_health
+	stats.health = max_health
+	stats.power_level = power_level
+
+	var result = power_up.apply_powerup(stats)
+
+	max_health = result.max_health
+	health = result.health
+	power_level = result.power_level
+
+	power_up.queue_free()
 
 func process_attack(incoming_damage: int, inflict_damage: Callable) -> bool:
 	inflict_damage.call(get_power_level())
@@ -157,22 +170,52 @@ func process_attack(incoming_damage: int, inflict_damage: Callable) -> bool:
 	return false
 
 func on_collision(entity: Node2D) -> bool:
-	if has_attacked and entity is Player:
+	if entity is PowerUp:
+		apply_power_up(entity)
+		return true
+
+	if has_attacked:
+		turn_finished.emit.call_deferred()
 		return false
 
+	attack_animator.target = (entity.position - position).normalized()
+	animation_player.play(&"attack")
+	var finished_animation = await animation_player.animation_finished
+	assert(finished_animation == &"attack")
+
 	if not entity.has_method(&"process_attack"):
+		turn_finished.emit.call_deferred()
 		return false
 	
 	var killed_entity = entity.process_attack(get_power_level(), apply_damage)
 
-	if killed_entity:
-		return true
+	if not killed_entity:
+		turn_finished.emit.call_deferred()
+		return false
 
-	return false
+	if entity.has_method("get_death_signal"):
+		await entity.get_death_signal()
+
+	return true
 
 
-func on_move(old_position: Vector2i, new_position: Vector2i) -> void:
-	pass
+func on_move(new_position: Vector2) -> void:
+	# position = new_position
+	move_animator.start_position = position
+	move_animator.target_position = new_position
+	animation_player.play(&"move")
+	var finished_animation = await animation_player.animation_finished
+	assert(finished_animation == &"move")
+
+	turn_finished.emit.call_deferred()
+
+func on_attack_wall(direction: Vector2i) -> void:
+	attack_animator.target = Vector2(direction).normalized()
+	animation_player.play(&"attack")
+	var finished_animation = await animation_player.animation_finished
+	assert(finished_animation == &"attack")
+
+	turn_finished.emit.call_deferred()
 
 
 func on_player_added(player: Player) -> void:
