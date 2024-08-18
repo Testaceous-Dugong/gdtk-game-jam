@@ -11,7 +11,7 @@
 resource_name = "entities"
 scenes/1/scene = ExtResource("1_3jaj6")
 scenes/2/scene = ExtResource("2_krah8")
-scenes/3/scene = ExtResource("3_w1eno")
+scenes/3/scene = ExtResource("3_y1yrl")
 scenes/5/scene = ExtResource("3_7wmix")
 scenes/6/scene = ExtResource("4_vjea8")
 

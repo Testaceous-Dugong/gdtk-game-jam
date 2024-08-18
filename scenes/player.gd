@@ -5,6 +5,7 @@ signal request_move(direction: Vector2i)
 
 signal health_changed(health: int)
 signal power_level_changed(power_level: int)
+signal experience_changed(level: int, experience: int)
 
 @export var max_health: int = 3
 @export var power_level: int = 0:
@@ -29,6 +30,7 @@ var experience: int:
 			health += 1
 			power_level += 1
 			experience %= level
+		experience_changed.emit(level, experience)
 
 var previous_coords: Vector2i
 
@@ -99,7 +101,6 @@ func on_collision(entity: Node2D) -> bool:
 	
 	var killed_entity = entity.process_attack(get_power_level(), apply_damage)
 	if not killed_entity:
-		experience += entity.get_experience_value()
 		GlobalMessageBus.advance_turn.emit()
 		return false
 	
