@@ -17,7 +17,7 @@ func _ready() -> void:
 	GlobalMessageBus.set_level.connect(reset)
 
 func _draw() -> void:
-	var y_offset = size.y as int - bar_height
+	var y_offset = size.y as int - bar_height * 2
 	var bar_size = Vector2i(((size.x as int) - (bar_spacing * current_level)) / (current_level + 1), bar_height)
 	for x in range(current_level + 1):
 		var color = Color.BLUE if x < current_experience else Color.DARK_GRAY
