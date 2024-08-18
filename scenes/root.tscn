@@ -14,7 +14,6 @@
 [node name="LevelManager" type="Node2D" parent="."]
 script = ExtResource("3_2sscc")
 levels = Array[PackedScene]([ExtResource("4_d4hbt"), ExtResource("4_oopak"), ExtResource("6_0ukci"), ExtResource("4_jne5q"), ExtResource("6_c07qh")])
-current_level = 4
 
 [node name="UI" parent="." instance=ExtResource("4_mxwsy")]
 
