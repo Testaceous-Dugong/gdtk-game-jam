@@ -136,7 +136,6 @@ func set_should_wait(value: bool) -> void:
 
 func apply_damage(damage: int) -> bool:
 	assert(health > 0, "health must be greater than 0")
-	has_attacked = true
 	health = clampi(health - damage, 0, max_health)
 	if health == 0:
 		animation_player.play(&"death")
@@ -147,6 +146,7 @@ func process_attack(incoming_damage: int, inflict_damage: Callable) -> bool:
 	inflict_damage.call(get_power_level())
 
 	apply_damage(incoming_damage)
+	has_attacked = true
 	if health == 0:
 		return true
 	return false
