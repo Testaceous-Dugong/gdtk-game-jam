@@ -32,8 +32,8 @@ func set_is_running(value: bool) -> void:
 func advance_turn() -> void:
 	if not running:
 		return
-	const TURN_DURATION = 0.05
-	await get_tree().create_timer(TURN_DURATION).timeout
+	if not running:
+		return
 	for child in get_sorted_children():
 		if not child.has_method(&"take_turn"):
 			continue
@@ -83,7 +83,6 @@ func move_entity(direction: Vector2i, entity: Node2D) -> void:
 		return
 	if health == 1:
 		clear_cell(new_position)
-		await entity.on_move(map_to_local(new_position))
 	else:
 		set_cell(
 			new_position,
