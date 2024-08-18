@@ -75,21 +75,24 @@ func move_entity(direction: Vector2i, entity: Node2D) -> void:
 	if tile_data == null:
 		return
 
+	var health = tile_data.get_custom_data(&"health");
+
 	if entity.has_method(&"on_attack_wall"):
-		await entity.on_attack_wall(direction)
-	match tile_data.get_custom_data(&"health"):
-		1:
-			clear_cell(new_position)
-			await entity.on_move(map_to_local(new_position))
-		var health when health > 0:
-			set_cell(
-				new_position,
-				get_cell_source_id(new_position),
-				Vector2i(
-					4 - (health - 1),
-					get_cell_atlas_coords(new_position).y
-				)
+		await entity.on_attack_wall(direction, health != 0)
+	if health == 0:
+		return
+	if health == 1:
+		clear_cell(new_position)
+		await entity.on_move(map_to_local(new_position))
+	else:
+		set_cell(
+			new_position,
+			get_cell_source_id(new_position),
+			Vector2i(
+				4 - (health - 1),
+				get_cell_atlas_coords(new_position).y
 			)
+		)
 
 
 func clear_cell(tile_position: Vector2i) -> void:

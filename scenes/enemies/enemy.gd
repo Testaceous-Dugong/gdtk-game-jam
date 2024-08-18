@@ -58,7 +58,6 @@ func reset_has_attacked() -> void:
 	has_attacked = false
 
 func take_turn() -> void:
-	print("enemy turn %s" % name)
 	if health == 0:
 		turn_finished.emit.call_deferred()
 		return
@@ -209,7 +208,7 @@ func on_move(new_position: Vector2) -> void:
 
 	turn_finished.emit.call_deferred()
 
-func on_attack_wall(direction: Vector2i) -> void:
+func on_attack_wall(direction: Vector2i, _destructable: bool) -> void:
 	attack_animator.target = Vector2(direction).normalized()
 	animation_player.play(&"attack")
 	var finished_animation = await animation_player.animation_finished

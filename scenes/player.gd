@@ -67,8 +67,6 @@ func _process(_delta: float) -> void:
 		request_move.emit(Vector2i.RIGHT)
 	else:
 		return
-	
-	print("player turn")
 
 
 func get_power_level() -> int:
@@ -152,14 +150,16 @@ func on_move(new_position: Vector2) -> void:
 
 	GlobalMessageBus.advance_turn.emit()
 
-func on_attack_wall(direction: Vector2i) -> void:
+func on_attack_wall(direction: Vector2i, destructable: bool) -> void:
 	attack_animator.target = Vector2(direction).normalized()
 
 	animation_player.play(&"attack")
 	var finished_animation = await animation_player.animation_finished
 	assert(finished_animation == &"attack")
-
-	GlobalMessageBus.advance_turn.emit()
+	if destructable:
+		GlobalMessageBus.advance_turn.emit()
+	else:
+		GlobalMessageBus.unpause_input.emit()
 
 func end_game() -> void:
 	GlobalMessageBus.restart_level.emit()
