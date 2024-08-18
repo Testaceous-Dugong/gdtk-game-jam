@@ -14,4 +14,8 @@ tile_map_data = PackedByteArray("AAACAAAAAwAAAA0AAAD+/wUAAwAAABsAAAD//wUAAwAAAAs
 tile_set = ExtResource("1_85bvv")
 script = ExtResource("2_wndw8")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 16)
+zoom = Vector2(3, 3)
+
 [connection signal="child_entered_tree" from="TileMapLayer" to="BossScaler" method="on_child_entered"]

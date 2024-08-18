@@ -33,10 +33,10 @@ script = ExtResource("2_28xuu")
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_vhjiv")
 
-[node name="AttackAnimator" parent="." index="4"]
+[node name="AttackAnimator" parent="." index="2"]
 animation_target = NodePath("../AnimatedSprite2D")
 
-[node name="MoveAudioSteamPlayer" parent="." index="6"]
+[node name="MoveAudioSteamPlayer" parent="." index="4"]
 volume_db = -4.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="on_animation_finished"]
