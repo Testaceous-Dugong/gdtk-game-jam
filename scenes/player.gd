@@ -55,6 +55,10 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed(&"restart"):
+		GlobalMessageBus.restart_level.emit()
+		return
+
 	if not allow_input or health == 0:
 		return
 	if Input.is_action_just_pressed(&"move_up"):
