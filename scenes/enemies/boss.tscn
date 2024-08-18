@@ -40,4 +40,5 @@ script = ExtResource("3_85udv")
 script = ExtResource("5_fmy1x")
 advance_animation_name = &"death"
 
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="on_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="LevelAdvancer" method="on_animation_finished"]
