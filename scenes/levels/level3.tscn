@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=4 uid="uid://b1j0nvmuoi6vg"]
+[gd_scene load_steps=4 format=4 uid="uid://biac53a1bmduu"]
 
 [ext_resource type="TileSet" uid="uid://ccs65fvhsl4f6" path="res://resources/puzzle.TileSet.tres" id="1_eqctk"]
 [ext_resource type="Script" path="res://scenes/scripts/BossScaler.gd" id="1_guhjc"]

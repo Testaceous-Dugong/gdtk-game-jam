@@ -13,6 +13,8 @@ func _ready() -> void:
 	GlobalMessageBus.register_player.connect(on_player_added.call_deferred)
 	GlobalMessageBus.unregister_player.connect(on_player_removed.call_deferred)
 	GlobalMessageBus.advance_level.connect(reset)
+	GlobalMessageBus.restart_level.connect(reset)
+	GlobalMessageBus.set_level.connect(reset)
 
 func _draw() -> void:
 	var y_offset = size.y as int - bar_height
