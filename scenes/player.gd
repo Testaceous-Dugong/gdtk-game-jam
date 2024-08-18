@@ -154,8 +154,6 @@ func on_move(new_position: Vector2) -> void:
 	var finished_animation = await animation_player.animation_finished
 	assert(finished_animation == &"move")
 
-	await audio_stream_player.finished
-
 	GlobalMessageBus.advance_turn.emit()
 
 func on_attack_wall(direction: Vector2i, destructable: bool) -> void:
