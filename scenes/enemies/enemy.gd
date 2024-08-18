@@ -34,6 +34,7 @@ var health: int:
 var players = {}
 
 var has_attacked = false
+var should_wait = false
 
 @onready var animation_player = $AnimationPlayer
 
@@ -53,11 +54,15 @@ func _ready() -> void:
 	GlobalMessageBus.unregister_player.connect(on_player_removed)
 	GlobalMessageBus.advance_turn.connect(on_turn_advanced)
 
+	GlobalMessageBus.pause_input.connect(set_should_wait.bind(true))
+	GlobalMessageBus.unpause_input.connect(set_should_wait.bind(false))
+
 func _process(_delta: float) -> void:
 	has_attacked = false
 
 func on_turn_advanced() -> void:
-	assert(get_parent() is TileMapLayer, "Enemy must be a child of a TileMapLayer")
+	if should_wait:
+		await GlobalMessageBus.unpause_input
 	match ai_type:
 		AIType.STATIONARY:
 			return
@@ -124,6 +129,9 @@ func get_power_level() -> int:
 
 func get_experience_value() -> int:
 	return experience_value
+
+func set_should_wait(value: bool) -> void:
+	should_wait = value
 
 func apply_damage(damage: int) -> bool:
 	assert(health > 0, "health must be greater than 0")
