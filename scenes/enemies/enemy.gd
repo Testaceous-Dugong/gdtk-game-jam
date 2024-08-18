@@ -97,21 +97,26 @@ func navigate_toward(target_position: Vector2i) -> bool:
 
 	var current_tile_coord = tile_map.local_to_map(position)
 	var is_diagonal_clear = tile_map.get_cell_tile_data(current_tile_coord + direction) == null
+	var is_vertical_clear = tile_map.get_cell_tile_data(current_tile_coord + Vector2i(0, direction.y)) == null
+	var is_horizontal_clear = tile_map.get_cell_tile_data(current_tile_coord + Vector2i(direction.x, 0)) == null
 	if not is_diagonal_clear:
-		if absf(delta.x) > absf(delta.y):
-			request_move.emit(Vector2i(direction.x, 0))
-		elif absf(delta.y) > absf(delta.x):
+		if (not is_vertical_clear and not is_horizontal_clear) or (is_vertical_clear and is_horizontal_clear):
+			if absf(delta.x) > absf(delta.y):
+				request_move.emit(Vector2i(direction.x, 0))
+			elif absf(delta.y) > absf(delta.x):
+				request_move.emit(Vector2i(0, direction.y))
+			else:
+				return false
+		elif is_vertical_clear:
 			request_move.emit(Vector2i(0, direction.y))
 		else:
-			request_move.emit(direction)
+			request_move.emit(Vector2i(direction.x, 0))
 		return true
 
-	var is_vertical_clear = tile_map.get_cell_tile_data(current_tile_coord + Vector2i(0, direction.y)) == null
 	if is_vertical_clear:
 		request_move.emit(direction)
 		return true
 
-	var is_horizontal_clear = tile_map.get_cell_tile_data(current_tile_coord + Vector2i(direction.x, 0)) == null
 	if is_horizontal_clear:
 		request_move.emit(direction)
 		return true
@@ -181,4 +186,3 @@ func on_animation_finished(animation_name: StringName) -> void:
 	if animation_name != "death":
 		return
 	get_parent().remove_child(self)
-	
