@@ -63,6 +63,7 @@ func _process(_delta: float) -> void:
 func on_turn_advanced() -> void:
 	if should_wait:
 		await GlobalMessageBus.unpause_input
+		await get_tree().process_frame
 	match ai_type:
 		AIType.STATIONARY:
 			return
@@ -142,16 +143,27 @@ func apply_damage(damage: int) -> bool:
 		return true
 	return false
 
+func process_attack(incoming_damage: int, inflict_damage: Callable) -> bool:
+	inflict_damage.call(get_power_level())
+
+	apply_damage(incoming_damage)
+	if health == 0:
+		return true
+	return false
+
 func on_collision(entity: Node2D) -> bool:
 	if has_attacked and entity is Player:
 		return false
-	
-	var should_move = entity.has_method(&"apply_damage") and entity.apply_damage(get_power_level())
-	
-	if entity.has_method(&"get_power_level"):
-		apply_damage(entity.get_power_level())
 
-	return should_move
+	if not entity.has_method(&"process_attack"):
+		return false
+	
+	var killed_entity = entity.process_attack(get_power_level(), apply_damage)
+
+	if killed_entity:
+		return true
+
+	return false
 
 
 func on_move(old_position: Vector2i, new_position: Vector2i) -> void:

@@ -62,7 +62,11 @@ func get_power_level() -> int:
 	return power_level + level
 
 func set_allow_input(value: bool) -> void:
-	allow_input = value
+	if value:
+		await get_tree().process_frame
+		allow_input = value
+	else:
+		allow_input = value
 
 func apply_power_up(power_up: PowerUp) -> void:
 	var stats = EntityStats.new()
@@ -80,26 +84,33 @@ func apply_power_up(power_up: PowerUp) -> void:
 
 	power_up.queue_free()
 
-func apply_damage(damage: int) -> bool:
+func process_attack(incoming_damage: int, inflict_damage: Callable) -> bool:
+	apply_damage(incoming_damage)
+	if health == 0:
+		return true
+	inflict_damage.call(get_power_level())
+	return false
+
+func apply_damage(damage: int) -> void:
 	assert(health > 0, "health must be greater than 0")
 	health = clampi(health - damage, 0, max_health)
 	if health == 0:
 		animation_player.play(&"death")
-		return true
-	return false
+		return
+	return
 
 func on_collision(entity: Node2D) -> bool:
 	if entity is PowerUp:
 		apply_power_up(entity)
 		return true
 	
-	var was_killed = entity.has_method(&"get_power_level") and apply_damage(entity.get_power_level())
-	if was_killed:
+	if not entity.has_method(&"process_attack"):
 		return false
 	
-	var killed_entity = entity.has_method(&"apply_damage") and entity.apply_damage(get_power_level())
+	var killed_entity = entity.process_attack(get_power_level(), apply_damage)
 	if killed_entity and entity.has_method(&"get_experience_value"):
 		experience += entity.get_experience_value()
+
 	return false
 
 
