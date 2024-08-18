@@ -15,9 +15,7 @@ zoom = Vector2(3, 3)
 script = ExtResource("3_2sscc")
 levels = Array[PackedScene]([ExtResource("4_d4hbt"), ExtResource("3_1flg6"), ExtResource("4_jne5q")])
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="Root" parent="UI" instance=ExtResource("4_mxwsy")]
+[node name="UI" parent="." instance=ExtResource("4_mxwsy")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
