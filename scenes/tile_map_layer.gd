@@ -32,8 +32,6 @@ func set_is_running(value: bool) -> void:
 func advance_turn() -> void:
 	if not running:
 		return
-	if not running:
-		return
 	for child in get_sorted_children():
 		if not child.has_method(&"take_turn"):
 			continue
