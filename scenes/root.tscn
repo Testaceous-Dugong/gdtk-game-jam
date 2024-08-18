@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://y8u7ep4h4552"]
+[gd_scene load_steps=9 format=3 uid="uid://y8u7ep4h4552"]
 
 [ext_resource type="PackedScene" uid="uid://cjwbx3aa6svs5" path="res://scenes/levels/level2.tscn" id="3_1flg6"]
 [ext_resource type="Script" path="res://scenes/level_manager.gd" id="3_2sscc"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cxgewsw17s7wg" path="res://scenes/ui/root.tscn" id="4_mxwsy"]
 [ext_resource type="PackedScene" uid="uid://b1j0nvmuoi6vg" path="res://scenes/levels/level3.tscn" id="4_oopak"]
 [ext_resource type="PackedScene" uid="uid://biac53a1bmduu" path="res://scenes/levels/level5.tscn" id="6_0ukci"]
+[ext_resource type="AudioStream" uid="uid://ubktqmym5mm0" path="res://assets/music/theme.mp3" id="6_mxgl8"]
 
 [node name="Root" type="Node"]
 
@@ -28,3 +29,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_mxgl8")
+volume_db = -4.0
+autoplay = true
+parameters/looping = false

@@ -17,6 +17,8 @@ signal experience_changed(level: int, experience: int)
 @onready var attack_animator = $AttackAnimator as AttackAnimator
 @onready var move_animator = $MoveAnimator as MoveAnimator
 
+@onready var audio_stream_player = $AudioStreamPlayer2D as AudioStreamPlayer2D
+
 var health: int:
 	set(value):
 		health = value
@@ -151,6 +153,8 @@ func on_move(new_position: Vector2) -> void:
 	animation_player.play(&"move")
 	var finished_animation = await animation_player.animation_finished
 	assert(finished_animation == &"move")
+
+	await audio_stream_player.finished
 
 	GlobalMessageBus.advance_turn.emit()
 

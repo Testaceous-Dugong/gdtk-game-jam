@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://7mkecy11cmva"]
+[gd_scene load_steps=7 format=3 uid="uid://7mkecy11cmva"]
 
 [ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_lk6xo"]
 [ext_resource type="Script" path="res://scenes/scripts/AttackAnimator.gd" id="2_7ovb1"]
 [ext_resource type="Script" path="res://scenes/scripts/MoveAnimator.gd" id="3_jk45j"]
+[ext_resource type="AudioStream" uid="uid://pe32qrjjdbgj" path="res://assets/sfx/move.wav" id="4_o51bs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_suat3"]
 font_size = 8
@@ -50,3 +51,6 @@ script = ExtResource("2_7ovb1")
 [node name="MoveAnimator" type="Node2D" parent="."]
 script = ExtResource("3_jk45j")
 animation_target = NodePath("..")
+
+[node name="MoveAudioSteamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_o51bs")

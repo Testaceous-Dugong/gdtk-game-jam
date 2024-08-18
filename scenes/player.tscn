@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://1d22jkgxwvbu"]
+[gd_scene load_steps=14 format=3 uid="uid://1d22jkgxwvbu"]
 
 [ext_resource type="Texture2D" uid="uid://h8l6w6pb4ohq" path="res://assets/player.png" id="1_388vq"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_jg0ce"]
 [ext_resource type="Script" path="res://scenes/scripts/EntityAnimationPlayer.gd" id="2_aep0u"]
+[ext_resource type="AudioStream" uid="uid://pe32qrjjdbgj" path="res://assets/sfx/move.wav" id="2_rggxd"]
 [ext_resource type="Script" path="res://scenes/scripts/AttackAnimator.gd" id="4_vuiua"]
 [ext_resource type="Script" path="res://scenes/scripts/MoveAnimator.gd" id="5_gywum"]
 
@@ -130,6 +131,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gno08"]
 _data = {
@@ -176,3 +191,7 @@ animation_target = NodePath("../AnimatedSprite2D")
 [node name="MoveAnimator" type="Node2D" parent="."]
 script = ExtResource("5_gywum")
 animation_target = NodePath("..")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_rggxd")
+max_polyphony = 3
