@@ -140,7 +140,7 @@ func set_should_wait(value: bool) -> void:
 	should_wait = value
 
 func apply_damage(damage: int) -> bool:
-	#assert(health > 0, "health must be greater than 0")
+	assert(health > 0, "health must be greater than 0")
 	health = clampi(health - damage, 0, max_health)
 	if health == 0:
 		animation_player.play(&"death")

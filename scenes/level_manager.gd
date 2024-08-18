@@ -16,6 +16,14 @@ func _ready() -> void:
 	current_level = current_level
 
 	GlobalMessageBus.advance_level.connect(advance_level)
+	GlobalMessageBus.restart_level.connect(restart_level)
+	GlobalMessageBus.set_level.connect(set_level)
 
 func advance_level() -> void:
 	current_level = (current_level + 1) % levels.size()
+
+func restart_level() -> void:
+	current_level = current_level
+
+func set_level(value: int) -> void:
+	current_level = value
