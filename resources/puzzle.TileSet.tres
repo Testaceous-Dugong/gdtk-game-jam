@@ -4,14 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://b50gpq726e53x" path="res://assets/terrain.png" id="1_km3wc"]
 [ext_resource type="PackedScene" uid="uid://dcvhxwjfia4nu" path="res://scenes/chest.tscn" id="2_krah8"]
 [ext_resource type="PackedScene" uid="uid://bmgw65kemv0t4" path="res://scenes/enemies/blue_slime.tscn" id="3_7wmix"]
-[ext_resource type="PackedScene" uid="uid://bgblwy6jnpiei" path="res://scenes/enemies/boss.tscn" id="3_w1eno"]
+[ext_resource type="PackedScene" uid="uid://bgblwy6jnpiei" path="res://scenes/enemies/boss.tscn" id="3_ke545"]
 [ext_resource type="PackedScene" uid="uid://rr5lhdxcfhyp" path="res://scenes/enemies/the_cooler_blue_slime.tscn" id="4_vjea8"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_v134t"]
 resource_name = "entities"
 scenes/1/scene = ExtResource("1_3jaj6")
 scenes/2/scene = ExtResource("2_krah8")
-scenes/3/scene = ExtResource("3_y1yrl")
+scenes/3/scene = ExtResource("3_ke545")
 scenes/5/scene = ExtResource("3_7wmix")
 scenes/6/scene = ExtResource("4_vjea8")
 

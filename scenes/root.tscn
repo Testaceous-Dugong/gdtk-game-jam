@@ -13,7 +13,7 @@ zoom = Vector2(3, 3)
 
 [node name="LevelManager" type="Node2D" parent="."]
 script = ExtResource("3_2sscc")
-levels = Array[PackedScene]([ExtResource("4_jne5q"), ExtResource("4_d4hbt"), ExtResource("3_1flg6")])
+levels = Array[PackedScene]([ExtResource("4_d4hbt"), ExtResource("3_1flg6"), ExtResource("4_jne5q")])
 
 [node name="UI" parent="." instance=ExtResource("4_mxwsy")]
 
