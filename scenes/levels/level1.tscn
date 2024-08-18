@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=4 uid="uid://bpyujqxiiiekt"]
 
 [ext_resource type="TileSet" uid="uid://ccs65fvhsl4f6" path="res://resources/puzzle.TileSet.tres" id="1_85bvv"]
-[ext_resource type="Script" path="res://scripts/BossScaler.gd" id="1_u8ec3"]
+[ext_resource type="Script" path="res://scenes/scripts/BossScaler.gd" id="1_u8ec3"]
 [ext_resource type="Script" path="res://scenes/tile_map_layer.gd" id="2_wndw8"]
 
 [node name="Level1" type="Node2D"]

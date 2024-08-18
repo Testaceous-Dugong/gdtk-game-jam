@@ -71,19 +71,7 @@ func set_allow_input(value: bool) -> void:
 		allow_input = value
 
 func apply_power_up(power_up: PowerUp) -> void:
-	var stats = EntityStats.new()
-	stats.max_health = max_health
-	stats.health = max_health
-	stats.power_level = power_level
-	stats.experience = experience
-
-	var result = power_up.apply_powerup(stats)
-
-	max_health = result.max_health
-	health = result.health
-	power_level = result.power_level
-	experience = result.experience
-
+	health = max_health
 	power_up.queue_free()
 
 func process_attack(incoming_damage: int, inflict_damage: Callable) -> bool:
