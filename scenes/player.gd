@@ -119,4 +119,4 @@ func on_move(old_position: Vector2i, _new_position: Vector2i) -> void:
 	GlobalMessageBus.advance_turn.emit()
 
 func end_game() -> void:
-	get_tree().reload_current_scene()
+	GlobalMessageBus.restart_level.emit()
