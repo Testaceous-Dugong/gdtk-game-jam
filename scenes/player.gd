@@ -25,6 +25,9 @@ var experience: int:
 		experience = value
 		if experience >= level + 1:
 			level += 1
+			max_health += 1
+			health += 1
+			power_level += 1
 			experience %= level
 
 var previous_coords: Vector2i
@@ -59,28 +62,16 @@ func _process(_delta: float) -> void:
 
 
 func get_power_level() -> int:
-	return power_level + level
+	return power_level
 
 func set_allow_input(value: bool) -> void:
 	if value:
-		await get_tree().process_frame
 		allow_input = value
 	else:
 		allow_input = value
 
 func apply_power_up(power_up: PowerUp) -> void:
-	var stats = EntityStats.new()
-	stats.health = health
-	stats.max_health = max_health
-	stats.power_level = get_power_level()
-	stats.experience = experience
-
-	var result = power_up.apply_powerup(stats)
-
-	health = result.health
-	max_health = result.max_health
-	power_level = result.power_level - level
-	experience = result.experience
+	health = max_health
 
 	power_up.queue_free()
 
@@ -108,8 +99,17 @@ func on_collision(entity: Node2D) -> bool:
 		return false
 	
 	var killed_entity = entity.process_attack(get_power_level(), apply_damage)
-	if killed_entity and entity.has_method(&"get_experience_value"):
+	if not killed_entity:
 		experience += entity.get_experience_value()
+		GlobalMessageBus.advance_turn.emit()
+		return false
+	
+	if entity.has_method("get_experience_value"):
+		experience += entity.get_experience_value()
+
+	if entity.has_method("get_death_signal"):
+		await entity.get_death_signal()
+		GlobalMessageBus.advance_turn.emit()
 
 	return false
 

@@ -22,7 +22,8 @@ signal request_move(direction: Vector2i)
 @export var power_level: int = 1:
 	set(value):
 		power_level = value
-		power_level_display.text = "⚔️".repeat(power_level)
+		if power_level_display:
+			power_level_display.text = "⚔️".repeat(power_level)
 
 @export var experience_value: int = 1
 
@@ -36,7 +37,7 @@ var players = {}
 var has_attacked = false
 var should_wait = false
 
-@onready var animation_player = $AnimationPlayer
+@onready var animation_player = $AnimationPlayer as AnimationPlayer
 
 @onready var health_display = $HealthDisplayAnchor/HealthDisplay
 @onready var power_level_display = $PowerDisplayAnchor/PowerDisplay
@@ -61,9 +62,6 @@ func _process(_delta: float) -> void:
 	has_attacked = false
 
 func on_turn_advanced() -> void:
-	if should_wait:
-		await GlobalMessageBus.unpause_input
-		await get_tree().process_frame
 	match ai_type:
 		AIType.STATIONARY:
 			return
@@ -135,7 +133,7 @@ func set_should_wait(value: bool) -> void:
 	should_wait = value
 
 func apply_damage(damage: int) -> bool:
-	assert(health > 0, "health must be greater than 0")
+	#assert(health > 0, "health must be greater than 0")
 	health = clampi(health - damage, 0, max_health)
 	if health == 0:
 		animation_player.play(&"death")
@@ -175,3 +173,12 @@ func on_player_added(player: Player) -> void:
 
 func on_player_removed(player: Player) -> void:
 	players.erase(player)
+
+func get_death_signal() -> Signal:
+	return animation_player.animation_finished
+
+func on_animation_finished(animation_name: StringName) -> void:
+	if animation_name != "death":
+		return
+	get_parent().remove_child(self)
+	

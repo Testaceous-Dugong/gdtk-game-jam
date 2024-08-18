@@ -96,6 +96,7 @@ animations = [{
 
 [node name="Player" type="Node2D" groups=["player"]]
 script = ExtResource("1_jg0ce")
+power_level = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
