@@ -46,6 +46,8 @@ var has_attacked = false
 @onready var attack_animator = $AttackAnimator as AttackAnimator
 @onready var move_animator = $MoveAnimator as MoveAnimator
 
+@onready var sprite = $AnimatedSprite2D as AnimatedSprite2D
+
 @onready var health_display = $HealthDisplay as StatDisplay
 @onready var power_level_display = $PowerDisplay as StatDisplay
 
@@ -182,6 +184,10 @@ func on_collision(entity: Node2D) -> bool:
 		turn_finished.emit.call_deferred()
 		return false
 
+	var direction = entity.position - position
+	if not is_zero_approx(direction.x):
+		sprite.flip_h = direction.x < 0
+
 	attack_animator.target = (entity.position - position).normalized()
 	animation_player.play(&"attack")
 	var finished_animation = await animation_player.animation_finished
@@ -204,7 +210,10 @@ func on_collision(entity: Node2D) -> bool:
 
 
 func on_move(new_position: Vector2) -> void:
-	# position = new_position
+	var direction = new_position - position
+	if not is_zero_approx(direction.x):
+		sprite.flip_h = direction.x < 0
+
 	move_animator.start_position = position
 	move_animator.target_position = new_position
 	animation_player.play(&"move")
@@ -214,6 +223,9 @@ func on_move(new_position: Vector2) -> void:
 	turn_finished.emit.call_deferred()
 
 func on_attack_wall(direction: Vector2i, _destructable: bool) -> void:
+	if direction.x != 0:
+		sprite.flip_h = direction.x < 0
+
 	attack_animator.target = Vector2(direction).normalized()
 	animation_player.play(&"attack")
 	var finished_animation = await animation_player.animation_finished

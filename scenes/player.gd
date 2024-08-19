@@ -17,6 +17,8 @@ signal experience_changed(level: int, experience: int)
 @onready var attack_animator = $AttackAnimator as AttackAnimator
 @onready var move_animator = $MoveAnimator as MoveAnimator
 
+@onready var sprite = $AnimatedSprite2D as AnimatedSprite2D
+
 @onready var audio_stream_player = $AudioStreamPlayer2D as AudioStreamPlayer2D
 
 var health: int:
@@ -117,6 +119,11 @@ func on_collision(entity: Node2D) -> bool:
 		apply_power_up(entity)
 		return true
 	
+	
+	var direction = entity.position - position
+	if not is_zero_approx(direction.x):
+		sprite.flip_h = direction.x < 0
+	
 	attack_animator.target = (entity.position - position).normalized()
 	animation_player.play(&"attack")
 	var finished_animation = await animation_player.animation_finished
@@ -147,6 +154,10 @@ func on_collision(entity: Node2D) -> bool:
 func on_move(new_position: Vector2) -> void:
 	previous_position = position
 
+	var direction = new_position - position
+	if not is_zero_approx(direction.x):
+		sprite.flip_h = direction.x < 0
+
 	move_animator.start_position = position
 	move_animator.target_position = new_position
 
@@ -157,6 +168,9 @@ func on_move(new_position: Vector2) -> void:
 	GlobalMessageBus.advance_turn.emit()
 
 func on_attack_wall(direction: Vector2i, destructable: bool) -> void:
+	if direction.x != 0:
+		sprite.flip_h = direction.x < 0
+
 	attack_animator.target = Vector2(direction).normalized()
 
 	animation_player.play(&"attack")
