@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://rr5lhdxcfhyp"]
+[gd_scene load_steps=6 format=3 uid="uid://rr5lhdxcfhyp"]
 
 [ext_resource type="PackedScene" uid="uid://7mkecy11cmva" path="res://scenes/enemies/enemy.tscn" id="1_kvbvo"]
 [ext_resource type="AnimationLibrary" uid="uid://bl7yuvqcq1ylr" path="res://resources/enemy.AnimationLibrary.tres" id="2_jgthg"]
 [ext_resource type="Script" path="res://scenes/scripts/EntityAnimationPlayer.gd" id="3_ccowr"]
 [ext_resource type="SpriteFrames" uid="uid://bx03yojwp1cxw" path="res://resources/blue_slime.SpriteFrames.tres" id="4_xaide"]
+[ext_resource type="SpriteFrames" uid="uid://decvjuk861s42" path="res://resources/xp.SpriteFrames.tres" id="5_ufyog"]
 
 [node name="BlueSlime" instance=ExtResource("1_kvbvo")]
 max_health = 2
@@ -19,7 +20,24 @@ script = ExtResource("3_ccowr")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = ExtResource("4_xaide")
 
+[node name="XPSprite" type="AnimatedSprite2D" parent="AnimatedSprite2D" index="0"]
+z_index = 10
+position = Vector2(-2, 0)
+sprite_frames = ExtResource("5_ufyog")
+
+[node name="XPSprite2" type="AnimatedSprite2D" parent="AnimatedSprite2D" index="1"]
+z_index = 10
+position = Vector2(2, 0)
+sprite_frames = ExtResource("5_ufyog")
+
 [node name="AttackAnimator" parent="." index="2"]
+visible = false
 animation_target = NodePath("../AnimatedSprite2D")
+
+[node name="MoveAnimator" parent="." index="3"]
+visible = false
+
+[node name="MoveAudioSteamPlayer" parent="." index="4"]
+visible = false
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="on_animation_finished"]

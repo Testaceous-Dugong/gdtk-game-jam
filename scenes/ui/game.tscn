@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://crqt4ewny5qxd" path="res://resources/ui_theme.Theme.tres" id="1_ak2ox"]
 [ext_resource type="Script" path="res://scenes/ui/player_display.gd" id="1_hufiq"]
 [ext_resource type="Script" path="res://scenes/ui/level_count_display.gd" id="2_e5lc7"]
-[ext_resource type="Script" path="res://scenes/ui/experience_bar.gd" id="2_s1kjn"]
+[ext_resource type="PackedScene" uid="uid://bsw0ige6cjgw8" path="res://scenes/ui/experience_bar.tscn" id="4_nutno"]
 
 [node name="Game" type="CanvasLayer"]
 visible = false
@@ -44,8 +44,5 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("1_hufiq")
 
-[node name="ExperienceBar" type="Control" parent="Span/VBoxContainer/Bottom"]
+[node name="ExperienceBar" parent="Span/VBoxContainer/Bottom" instance=ExtResource("4_nutno")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = ExtResource("2_s1kjn")
