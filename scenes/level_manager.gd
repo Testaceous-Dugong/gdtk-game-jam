@@ -8,11 +8,15 @@ extends Node2D
 		assert(value >= 0)
 		assert(value < levels.scenes.size())
 
+		if current_level != value:
+			GlobalMessageBus.level_changed.emit.call_deferred(value)
+
 		current_level = value
 		for child in get_children():
 			remove_child(child)
 			child.queue_free()
 		
+
 		assert(levels.scenes[current_level])
 		add_child(levels.scenes[current_level].instantiate())
 

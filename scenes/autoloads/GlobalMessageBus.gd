@@ -13,6 +13,8 @@ signal restart_level()
 
 signal set_level(index: int)
 
+signal level_changed(index: int)
+
 func _ready() -> void:
 	assert(register_player)
 	assert(unregister_player)
@@ -26,3 +28,5 @@ func _ready() -> void:
 	assert(restart_level)
 
 	assert(set_level)
+
+	assert(level_changed)

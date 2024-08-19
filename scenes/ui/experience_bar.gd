@@ -12,9 +12,8 @@ var current_experience = 0
 func _ready() -> void:
 	GlobalMessageBus.register_player.connect(on_player_added.call_deferred)
 	GlobalMessageBus.unregister_player.connect(on_player_removed.call_deferred)
-	GlobalMessageBus.advance_level.connect(reset)
+	GlobalMessageBus.level_changed.connect(reset)
 	GlobalMessageBus.restart_level.connect(reset)
-	GlobalMessageBus.set_level.connect(reset)
 
 func _draw() -> void:
 	var y_offset = size.y as int - bar_height * 2
@@ -35,7 +34,7 @@ func on_experience_changed(level: int, experience: int) -> void:
 	current_experience = experience
 	queue_redraw()
 
-func reset() -> void:
+func reset(_index: int) -> void:
 	current_level = 1
 	current_experience = 0
 	queue_redraw()
