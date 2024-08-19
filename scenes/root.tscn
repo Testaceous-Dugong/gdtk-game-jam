@@ -1,17 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://y8u7ep4h4552"]
+[gd_scene load_steps=3 format=3 uid="uid://y8u7ep4h4552"]
 
-[ext_resource type="Resource" uid="uid://cwiklagahlavs" path="res://resources/levels.LevelSequence.tres" id="2_ukjl6"]
-[ext_resource type="Script" path="res://scenes/level_manager.gd" id="3_2sscc"]
-[ext_resource type="PackedScene" uid="uid://cxgewsw17s7wg" path="res://scenes/ui/root.tscn" id="4_mxwsy"]
+[ext_resource type="PackedScene" uid="uid://0konxo3n6j75" path="res://scenes/game.tscn" id="1_wxyp7"]
+[ext_resource type="PackedScene" uid="uid://bxcdmp2knk87r" path="res://scenes/ui/main_menu.tscn" id="2_c6esc"]
 
 [node name="Root" type="Node"]
 
-[node name="LevelManager" type="Node2D" parent="."]
-y_sort_enabled = true
-script = ExtResource("3_2sscc")
-levels = ExtResource("2_ukjl6")
+[node name="Game" parent="." instance=ExtResource("1_wxyp7")]
 
-[node name="UI" parent="." instance=ExtResource("4_mxwsy")]
+[node name="MainMenu" parent="." instance=ExtResource("2_c6esc")]
+visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1

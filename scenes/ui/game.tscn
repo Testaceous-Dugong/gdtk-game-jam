@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxgewsw17s7wg"]
+
+[ext_resource type="Script" path="res://scenes/ui/player_display.gd" id="1_hufiq"]
+[ext_resource type="Script" path="res://scenes/ui/experience_bar.gd" id="2_s1kjn"]
+
+[node name="Game" type="CanvasLayer"]
+visible = false
+
+[node name="Span" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Span"]
+layout_mode = 2
+
+[node name="Top" type="HBoxContainer" parent="Span/VBoxContainer"]
+layout_mode = 2
+
+[node name="Filler" type="Control" parent="Span/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Bottom" type="HBoxContainer" parent="Span/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayerDisplay" type="HBoxContainer" parent="Span/VBoxContainer/Bottom"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("1_hufiq")
+
+[node name="ExperienceBar" type="Control" parent="Span/VBoxContainer/Bottom"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("2_s1kjn")

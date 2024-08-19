@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://0konxo3n6j75"]
+
+[ext_resource type="Script" path="res://scenes/level_manager.gd" id="1_32orn"]
+[ext_resource type="Resource" uid="uid://cwiklagahlavs" path="res://resources/levels.LevelSequence.tres" id="2_1paij"]
+[ext_resource type="PackedScene" uid="uid://cxgewsw17s7wg" path="res://scenes/ui/game.tscn" id="3_s5gnt"]
+[ext_resource type="Script" path="res://scenes/ui/game.gd" id="4_684cp"]
+
+[node name="Game" type="Node2D"]
+
+[node name="LevelManager" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("1_32orn")
+levels = ExtResource("2_1paij")
+
+[node name="UI" parent="." instance=ExtResource("3_s5gnt")]
+script = ExtResource("4_684cp")

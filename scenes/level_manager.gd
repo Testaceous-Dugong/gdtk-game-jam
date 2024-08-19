@@ -22,8 +22,6 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	current_level = current_level
-
 	GlobalMessageBus.advance_level.connect(advance_level)
 	GlobalMessageBus.restart_level.connect(restart_level)
 	GlobalMessageBus.set_level.connect(set_level)

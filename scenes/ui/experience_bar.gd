@@ -34,7 +34,7 @@ func on_experience_changed(level: int, experience: int) -> void:
 	current_experience = experience
 	queue_redraw()
 
-func reset(_index: int) -> void:
+func reset(_index: int = 0) -> void:
 	current_level = 1
 	current_experience = 0
 	queue_redraw()
