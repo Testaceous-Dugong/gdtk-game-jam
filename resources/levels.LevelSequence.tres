@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="LevelSequence" load_steps=11 format=3 uid="uid://cwiklagahlavs"]
+
+[ext_resource type="PackedScene" path="res://scenes/levels/level_1_level_up.tscn" id="1_2xvg4"]
+[ext_resource type="Script" path="res://resources/custom/LevelSequence.gd" id="1_q7ktp"]
+[ext_resource type="PackedScene" path="res://scenes/levels/level_2_breakable_blocks_and_slime_damage_boss.tscn" id="2_5m77b"]
+[ext_resource type="PackedScene" path="res://scenes/levels/level_3_getting_caught.tscn" id="3_5a8b8"]
+[ext_resource type="PackedScene" path="res://scenes/levels/level_4_big_moves.tscn" id="4_gh3o6"]
+[ext_resource type="PackedScene" path="res://scenes/levels/level_5_player_break_blocks.tscn" id="5_trvsn"]
+[ext_resource type="PackedScene" path="res://scenes/levels/level_6_hit_and_come_back.tscn" id="6_k5um7"]
+[ext_resource type="PackedScene" path="res://scenes/levels/level_7_making_use_of_time.tscn" id="7_4sedg"]
+[ext_resource type="PackedScene" path="res://scenes/levels/level_8_long_chase.tscn" id="8_1d3o4"]
+[ext_resource type="PackedScene" path="res://scenes/levels/level_9_prepare_in_advance.tscn" id="9_e2ga2"]
+
+[resource]
+script = ExtResource("1_q7ktp")
+scenes = Array[PackedScene]([ExtResource("1_2xvg4"), ExtResource("2_5m77b"), ExtResource("3_5a8b8"), ExtResource("4_gh3o6"), ExtResource("5_trvsn"), ExtResource("6_k5um7"), ExtResource("7_4sedg"), ExtResource("8_1d3o4"), ExtResource("9_e2ga2")])
