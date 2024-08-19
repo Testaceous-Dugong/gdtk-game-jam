@@ -8,7 +8,6 @@
 [node name="Game" parent="." instance=ExtResource("1_wxyp7")]
 
 [node name="MainMenu" parent="." instance=ExtResource("2_c6esc")]
-visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
