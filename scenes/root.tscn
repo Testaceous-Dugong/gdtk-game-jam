@@ -31,3 +31,4 @@ grow_vertical = 2
 stream = ExtResource("6_mxgl8")
 volume_db = -4.0
 autoplay = true
+parameters/looping = false
