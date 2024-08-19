@@ -11,10 +11,12 @@
 
 [node name="Enemy" type="Node2D"]
 process_priority = 10
+y_sort_enabled = true
 script = ExtResource("1_lk6xo")
 
 [node name="AttackAnimator" type="Node2D" parent="."]
 script = ExtResource("2_7ovb1")
+attack_distance = 4.0
 
 [node name="MoveAnimator" type="Node2D" parent="."]
 script = ExtResource("3_jk45j")
@@ -23,20 +25,23 @@ animation_target = NodePath("..")
 [node name="MoveAudioSteamPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_o51bs")
 
-[node name="PowerDisplay" type="HBoxContainer" parent="."]
+[node name="HealthDisplay" type="HBoxContainer" parent="."]
+z_index = 10
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_top = 8.0
-offset_right = 20.0
-offset_bottom = 31.0
+offset_left = -21.0
+offset_top = -26.0
+offset_right = 19.0
+offset_bottom = -3.0
 grow_horizontal = 2
 alignment = 1
 script = ExtResource("5_qo5km")
-stat_icon = ExtResource("6_6t64y")
+stat_icon = ExtResource("6_masa2")
+missing_stat_icon = ExtResource("8_aceof")
 
-[node name="HealthDisplay" type="HBoxContainer" parent="."]
+[node name="PowerDisplay" type="HBoxContainer" parent="."]
+z_index = 10
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -47,5 +52,4 @@ offset_bottom = 7.0
 grow_horizontal = 2
 alignment = 1
 script = ExtResource("5_qo5km")
-stat_icon = ExtResource("6_masa2")
-missing_stat_icon = ExtResource("8_aceof")
+stat_icon = ExtResource("6_6t64y")

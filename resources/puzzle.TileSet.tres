@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://1d22jkgxwvbu" path="res://scenes/player.tscn" id="1_3jaj6"]
 [ext_resource type="Texture2D" uid="uid://b50gpq726e53x" path="res://assets/terrain.png" id="1_km3wc"]
-[ext_resource type="PackedScene" uid="uid://dcvhxwjfia4nu" path="res://scenes/chest.tscn" id="2_krah8"]
+[ext_resource type="PackedScene" uid="uid://dcvhxwjfia4nu" path="res://scenes/health_pickup.tscn" id="2_krah8"]
 [ext_resource type="PackedScene" uid="uid://bmgw65kemv0t4" path="res://scenes/enemies/blue_slime.tscn" id="3_7wmix"]
 [ext_resource type="PackedScene" uid="uid://bgblwy6jnpiei" path="res://scenes/enemies/boss.tscn" id="3_ke545"]
 [ext_resource type="PackedScene" uid="uid://rr5lhdxcfhyp" path="res://scenes/enemies/the_cooler_blue_slime.tscn" id="4_vjea8"]

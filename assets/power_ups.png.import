@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d030p2623ip80"
-path="res://.godot/imported/yellow_slime.png-f4c3b0a11233b41fbec399211b742833.ctex"
+uid="uid://dju46m08cwtpm"
+path="res://.godot/imported/power_ups.png-6e7122efea7b24152fe3333bcdcde5db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/yellow_slime.png"
-dest_files=["res://.godot/imported/yellow_slime.png-f4c3b0a11233b41fbec399211b742833.ctex"]
+source_file="res://assets/power_ups.png"
+dest_files=["res://.godot/imported/power_ups.png-6e7122efea7b24152fe3333bcdcde5db.ctex"]
 
 [params]
 

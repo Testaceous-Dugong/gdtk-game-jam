@@ -156,6 +156,7 @@ animations = [{
 }]
 
 [node name="Player" type="Node2D" groups=["player"]]
+z_index = 10
 y_sort_enabled = true
 script = ExtResource("1_jg0ce")
 power_level = 1
@@ -173,6 +174,7 @@ sprite_frames = SubResource("SpriteFrames_q7ogt")
 [node name="AttackAnimator" type="Node2D" parent="."]
 script = ExtResource("4_vuiua")
 animation_target = NodePath("../AnimatedSprite2D")
+attack_distance = 4.0
 
 [node name="MoveAnimator" type="Node2D" parent="."]
 script = ExtResource("5_gywum")

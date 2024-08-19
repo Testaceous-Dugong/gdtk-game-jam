@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1rk2ae7r43i8"
-path="res://.godot/imported/pink_slime.png-3c3d47714419b0be94cd31de262d6be4.ctex"
+uid="uid://dpuf0rncs780b"
+path="res://.godot/imported/slimes.png-919ef08209e14457382f30e3d1b091fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pink_slime.png"
-dest_files=["res://.godot/imported/pink_slime.png-3c3d47714419b0be94cd31de262d6be4.ctex"]
+source_file="res://assets/slimes.png"
+dest_files=["res://.godot/imported/slimes.png-919ef08209e14457382f30e3d1b091fc.ctex"]
 
 [params]
 

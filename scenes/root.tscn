@@ -12,6 +12,7 @@
 [node name="Root" type="Node"]
 
 [node name="LevelManager" type="Node2D" parent="."]
+y_sort_enabled = true
 script = ExtResource("3_2sscc")
 levels = Array[PackedScene]([ExtResource("4_d4hbt"), ExtResource("4_oopak"), ExtResource("6_0ukci"), ExtResource("4_jne5q"), ExtResource("6_c07qh")])
 
@@ -26,9 +27,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.76, 0.73796, 0.5396, 1)
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_mxgl8")
 volume_db = -4.0
 autoplay = true
-parameters/looping = false
+parameters/looping = true

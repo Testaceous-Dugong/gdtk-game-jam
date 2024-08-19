@@ -2,20 +2,20 @@
 
 [ext_resource type="PackedScene" uid="uid://7mkecy11cmva" path="res://scenes/enemies/enemy.tscn" id="1_chrgk"]
 [ext_resource type="Script" path="res://scenes/enemies/boss.gd" id="2_4alkt"]
-[ext_resource type="Texture2D" uid="uid://d030p2623ip80" path="res://assets/yellow_slime.png" id="2_kalvu"]
 [ext_resource type="Script" path="res://scenes/scripts/EntityAnimationPlayer.gd" id="3_85udv"]
 [ext_resource type="AnimationLibrary" uid="uid://bl7yuvqcq1ylr" path="res://resources/enemy.AnimationLibrary.tres" id="3_585is"]
+[ext_resource type="Texture2D" uid="uid://dpuf0rncs780b" path="res://assets/slimes.png" id="3_j8moy"]
 [ext_resource type="Script" path="res://scenes/enemies/level_advancer.gd" id="5_fmy1x"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o3hpd"]
-atlas = ExtResource("2_kalvu")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_nj5v5"]
+atlas = ExtResource("3_j8moy")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0s33m"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o3hpd")
+"texture": SubResource("AtlasTexture_nj5v5")
 }],
 "loop": true,
 "name": &"default",
@@ -24,7 +24,6 @@ animations = [{
 
 [node name="Boss" instance=ExtResource("1_chrgk")]
 process_priority = 20
-y_sort_enabled = true
 script = ExtResource("2_4alkt")
 ai_type = 3
 movement_type = 1
@@ -39,12 +38,12 @@ libraries = {
 }
 script = ExtResource("3_85udv")
 
+[node name="AttackAnimator" parent="." index="2"]
+animation_target = NodePath("../AnimatedSprite2D")
+
 [node name="LevelAdvancer" type="Node" parent="." index="4"]
 script = ExtResource("5_fmy1x")
 advance_animation_name = &"death"
-
-[node name="AttackAnimator" parent="." index="5"]
-animation_target = NodePath("../AnimatedSprite2D")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="on_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="LevelAdvancer" method="on_animation_finished"]
