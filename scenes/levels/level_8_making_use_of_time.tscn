@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://ccs65fvhsl4f6" path="res://resources/puzzle.TileSet.tres" id="2_plgfb"]
 [ext_resource type="Script" path="res://scenes/tile_map_layer.gd" id="3_3lpwp"]
 
-[node name="Level1" type="Node2D"]
+[node name="Level8" type="Node2D"]
 
 [node name="BossScaler" type="Node2D" parent="."]
 script = ExtResource("1_6r65h")

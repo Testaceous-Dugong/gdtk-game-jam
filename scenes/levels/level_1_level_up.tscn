@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/scripts/BossScaler.gd" id="1_u8ec3"]
 [ext_resource type="Script" path="res://scenes/tile_map_layer.gd" id="2_wndw8"]
 
-[node name="Level2" type="Node2D"]
+[node name="Level1" type="Node2D"]
 
 [node name="BossScaler" type="Node2D" parent="."]
 script = ExtResource("1_u8ec3")

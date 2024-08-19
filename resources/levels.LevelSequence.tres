@@ -7,10 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://biac53a1bmduu" path="res://scenes/levels/level_4_big_moves.tscn" id="4_gh3o6"]
 [ext_resource type="PackedScene" uid="uid://ra82mxux5kpr" path="res://scenes/levels/level_5_player_break_blocks.tscn" id="5_trvsn"]
 [ext_resource type="PackedScene" uid="uid://d11irmd1wfs0r" path="res://scenes/levels/level_6_hit_and_come_back.tscn" id="6_k5um7"]
-[ext_resource type="PackedScene" uid="uid://biac53a1bmduu" path="res://scenes/levels/level_7_long_chase.tscn" id="7_tjqao"]
+[ext_resource type="PackedScene" uid="uid://bkbixevov67wo" path="res://scenes/levels/level_7_long_journey.tscn" id="7_yg7wj"]
 [ext_resource type="PackedScene" uid="uid://57pnkkqdbh50" path="res://scenes/levels/level_8_making_use_of_time.tscn" id="8_0on5k"]
-[ext_resource type="PackedScene" uid="uid://biac53a1bmduu" path="res://scenes/levels/level_9_prepare_in_advance.tscn" id="9_e2ga2"]
+[ext_resource type="PackedScene" uid="uid://bcpk67o6qmd4m" path="res://scenes/levels/level_9_breaking_in.tscn" id="9_fhde4"]
 
 [resource]
 script = ExtResource("1_q7ktp")
-scenes = Array[PackedScene]([ExtResource("1_2xvg4"), ExtResource("2_5m77b"), ExtResource("3_5a8b8"), ExtResource("4_gh3o6"), ExtResource("5_trvsn"), ExtResource("6_k5um7"), ExtResource("7_tjqao"), ExtResource("8_0on5k"), ExtResource("9_e2ga2")])
+scenes = Array[PackedScene]([ExtResource("1_2xvg4"), ExtResource("2_5m77b"), ExtResource("3_5a8b8"), ExtResource("4_gh3o6"), ExtResource("5_trvsn"), ExtResource("6_k5um7"), ExtResource("7_yg7wj"), ExtResource("8_0on5k"), ExtResource("9_fhde4")])
