@@ -17,7 +17,8 @@ config/icon="res://assets/icon.svg"
 
 [autoload]
 
-GlobalMessageBus="*res://scenes/scripts/autoloads/GlobalMessageBus.gd"
+GlobalMessageBus="*res://scenes/autoloads/GlobalMessageBus.gd"
+MusicPlayer="*res://scenes/autoloads/MusicPlayer.tscn"
 
 [display]
 
