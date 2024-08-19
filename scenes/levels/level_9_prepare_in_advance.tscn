@@ -1,15 +1,15 @@
-[gd_scene load_steps=4 format=4 uid="uid://d0av0lunv6ws1"]
+[gd_scene load_steps=4 format=4 uid="uid://biac53a1bmduu"]
 
 [ext_resource type="Script" path="res://scenes/scripts/BossScaler.gd" id="1_6j0ji"]
 [ext_resource type="TileSet" uid="uid://ccs65fvhsl4f6" path="res://resources/puzzle.TileSet.tres" id="1_wc5cm"]
 [ext_resource type="Script" path="res://scenes/tile_map_layer.gd" id="2_xh6j7"]
 
-[node name="Level1" type="Node2D"]
+[node name="Level2" type="Node2D"]
 
 [node name="BossScaler" type="Node2D" parent="."]
 script = ExtResource("1_6j0ji")
 max_health = 6
-power_level = 3
+power_level = 4
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(12, 7)

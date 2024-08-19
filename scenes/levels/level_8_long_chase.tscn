@@ -1,20 +1,20 @@
-[gd_scene load_steps=4 format=4 uid="uid://ducmsxfjsy67i"]
+[gd_scene load_steps=4 format=4 uid="uid://biac53a1bmduu"]
 
-[ext_resource type="Script" path="res://scenes/scripts/BossScaler.gd" id="1_6j0ji"]
-[ext_resource type="TileSet" uid="uid://ccs65fvhsl4f6" path="res://resources/puzzle.TileSet.tres" id="1_wc5cm"]
-[ext_resource type="Script" path="res://scenes/tile_map_layer.gd" id="2_xh6j7"]
+[ext_resource type="Script" path="res://scenes/scripts/BossScaler.gd" id="1_wj5xa"]
+[ext_resource type="TileSet" uid="uid://ccs65fvhsl4f6" path="res://resources/puzzle.TileSet.tres" id="2_pphvd"]
+[ext_resource type="Script" path="res://scenes/tile_map_layer.gd" id="3_8gf4p"]
 
-[node name="Level1" type="Node2D"]
+[node name="Level2" type="Node2D"]
 
 [node name="BossScaler" type="Node2D" parent="."]
-script = ExtResource("1_6j0ji")
+script = ExtResource("1_wj5xa")
 max_health = 6
 power_level = 4
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD6//z/AwAAAA4AAAD6//3/AwAAAA4AAAD6//7/AwAAAA4AAAD6////AwAAAA4AAAD6/wAAAwAAAA4AAAD6/wEAAwAAAA4AAAD6/wIAAwAAAA4AAAD6/wMAAwAAAA4AAAD6/wQAAwAAAA4AAAD6/wUAAwAAABsAAAD9/wUAAwAAAAsAAAABAAUAAwAAAAsAAAD6//r/AwAAABwAAAD6//v/AwAAAA4AAAD7//r/AwAAAAwAAAD7/wUAAwAAAAsAAAD8//r/AwAAAAwAAAD8/wUAAwAAAAsAAAD9//r/AwAAAAwAAAD+//r/AwAAAAwAAAD+////AAAAAAAAAQD+/wUAAwAAAAsAAAD///r/AwAAAAwAAAD//wUAAwAAAAsAAAAAAPr/AwAAAAwAAAAAAAUAAwAAAAsAAAABAPr/AwAAAAwAAAACAPr/AwAAAAwAAAACAAUAAwAAAAsAAAD9/wIAAAAAAAAABQD9//7/AwABAAAAAAD8//3/AwABAAAAAAD+//v/AwABAAAAAAABAAMAAwABAAAAAAD9/wQAAwABAAAAAAD+/wAAAwABAAAAAAAAAAEAAwABAAAAAAD+/wEAAAAAAAAAAgAEAPr/AwAAAAwAAAAEAP7/AwABAAAAAAAEAP//AwABAAAAAAAEAAAAAwABAAAAAAAEAAUAAwAAAAsAAAAFAPr/AwAAAB0AAAAFAPv/AwAAAA0AAAAFAPz/AwAAAA0AAAAFAP3/AwAAAA0AAAAFAP7/AwAAAAgAAAAFAP//AAAAAAAAAwAFAAAAAwAAAAcAAAAFAAEAAwAAAA0AAAAFAAIAAwAAAA0AAAAFAAMAAwAAAA0AAAAFAAQAAwAAAA0AAAAFAAUAAwAAAB4AAAADAAUAAwAAAAsAAAADAPr/AwAAAAwAAAD7//z/AAAAAAAABQD+//3/AAAAAAAABgD//wEAAAAAAAAABQADAAEAAAAAAAAABgADAAMAAAAAAAAABQD6/wYAAwAAACoAAAD7/wYAAwAAACoAAAD8/wYAAwAAACoAAAD9/wYAAwAAACoAAAD+/wYAAwAAACoAAAD//wYAAwAAACoAAAAAAAYAAwAAACoAAAABAAYAAwAAACoAAAACAAYAAwAAACoAAAADAAYAAwAAACoAAAAEAAYAAwAAACoAAAAFAAYAAwAAACoAAAAGAAYAAwAAACoAAAAGAAUAAwAAACoAAAAGAAQAAwAAACoAAAAGAAMAAwAAACoAAAAGAAIAAwAAACoAAAAGAAEAAwAAACoAAAAGAAAAAwAAAAsAAAAGAP7/AwAAAAwAAAAGAP3/AwAAACoAAAAGAPz/AwAAACoAAAAGAPv/AwAAACoAAAAGAPr/AwAAACoAAAAGAPn/AwAAACoAAAAFAPn/AwAAACoAAAAEAPn/AwAAACoAAAADAPn/AwAAACoAAAACAPn/AwAAACoAAAABAPn/AwAAACoAAAAAAPn/AwAAACoAAAD///n/AwAAACoAAAD+//n/AwAAACoAAAD9//n/AwAAACoAAAD8//n/AwAAACoAAAD7//n/AwAAACoAAAD6//n/AwAAACoAAAD5//n/AwAAACoAAAD5//r/AwAAACoAAAD5//v/AwAAACoAAAD5//z/AwAAACoAAAD5//3/AwAAACoAAAD5//7/AwAAACoAAAD5////AwAAACoAAAD5/wAAAwAAACoAAAD5/wEAAwAAACoAAAD5/wIAAwAAACoAAAD5/wMAAwAAACoAAAD5/wQAAwAAACoAAAD5/wUAAwAAACoAAAD5/wYAAwAAACoAAAA=")
-tile_set = ExtResource("1_wc5cm")
-script = ExtResource("2_xh6j7")
+tile_set = ExtResource("2_pphvd")
+script = ExtResource("3_8gf4p")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 16)
