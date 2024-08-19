@@ -4,10 +4,14 @@ extends Node2D
 signal request_move(direction: Vector2i)
 
 signal health_changed(health: int)
+signal max_health_changed(max_health: int)
 signal power_level_changed(power_level: int)
 signal experience_changed(level: int, experience: int)
 
-@export var max_health: int = 3
+@export var max_health: int = 3:
+	set(value):
+		max_health = value
+		max_health_changed.emit(max_health)
 @export var power_level: int = 0:
 	set(value):
 		power_level = value
@@ -102,11 +106,10 @@ func apply_power_up(power_up: PowerUp) -> void:
 
 	power_up.queue_free()
 
-func process_attack(incoming_damage: int, inflict_damage: Callable) -> bool:
+func process_attack(incoming_damage: int, _inflict_damage: Callable) -> bool:
 	apply_damage(incoming_damage)
 	if health == 0:
 		return true
-	inflict_damage.call(get_power_level())
 	return false
 
 func apply_damage(damage: int) -> void:

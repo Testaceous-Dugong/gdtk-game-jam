@@ -27,6 +27,7 @@ process_priority = 20
 script = ExtResource("2_4alkt")
 ai_type = 3
 movement_type = 1
+experience_value = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
 y_sort_enabled = true

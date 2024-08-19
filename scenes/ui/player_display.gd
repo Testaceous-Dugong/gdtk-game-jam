@@ -17,9 +17,11 @@ func on_player_added(player: Player) -> void:
 	players[player] = player_display
 
 	player_display.set_health(player.health)
+	player_display.set_max_health(player.max_health)
 	player_display.set_power_level(player.get_power_level())
 
 	player.health_changed.connect(player_display.set_health)
+	player.max_health_changed.connect(player_display.set_max_health)
 	player.power_level_changed.connect(player_display.set_power_level)
 
 func on_player_removed(player: Player) -> void:
