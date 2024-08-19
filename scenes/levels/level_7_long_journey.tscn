@@ -18,7 +18,7 @@ tile_set = ExtResource("2_jbn4h")
 script = ExtResource("3_cly3h")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, 32)
+position = Vector2(8, 24)
 zoom = Vector2(3, 3)
 
 [connection signal="child_entered_tree" from="TileMapLayer" to="BossScaler" method="on_child_entered"]
