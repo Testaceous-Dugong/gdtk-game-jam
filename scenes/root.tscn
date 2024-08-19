@@ -27,7 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.76, 0.73796, 0.5396, 1)
+color = Color(0.964706, 0.933333, 0.890196, 1)
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_mxgl8")
