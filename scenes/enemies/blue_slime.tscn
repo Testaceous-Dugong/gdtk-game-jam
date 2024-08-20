@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmgw65kemv0t4"]
+
+[ext_resource type="PackedScene" uid="uid://7mkecy11cmva" path="res://scenes/enemies/enemy.tscn" id="1_cyoe0"]
+[ext_resource type="Script" path="res://scenes/scripts/EntityAnimationPlayer.gd" id="2_28xuu"]
+[ext_resource type="AnimationLibrary" uid="uid://bl7yuvqcq1ylr" path="res://resources/enemy.AnimationLibrary.tres" id="2_85ese"]
+[ext_resource type="SpriteFrames" uid="uid://bx03yojwp1cxw" path="res://resources/blue_slime.SpriteFrames.tres" id="4_ik10e"]
+[ext_resource type="SpriteFrames" uid="uid://decvjuk861s42" path="res://resources/xp.SpriteFrames.tres" id="5_ort0c"]
+
+[node name="BlueSlime" instance=ExtResource("1_cyoe0")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
+libraries = {
+"": ExtResource("2_85ese")
+}
+script = ExtResource("2_28xuu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+y_sort_enabled = true
+sprite_frames = ExtResource("4_ik10e")
+
+[node name="XPBalls" type="Node2D" parent="." index="2"]
+
+[node name="XPSprite" type="AnimatedSprite2D" parent="XPBalls" index="0"]
+z_index = 10
+sprite_frames = ExtResource("5_ort0c")
+
+[node name="AttackAnimator" parent="." index="3"]
+animation_target = NodePath("../AnimatedSprite2D")
+
+[node name="MoveAudioSteamPlayer" parent="." index="5"]
+volume_db = -4.0
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="on_animation_finished"]

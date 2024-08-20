@@ -1,0 +1,50 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://crqt4ewny5qxd"]
+
+[ext_resource type="FontFile" uid="uid://byaor2djfff5a" path="res://assets/fonts/PixelOperator8.ttf" id="1_bd2xj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nga2s"]
+bg_color = Color(0.898039, 0.796078, 0.729412, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85098, 0.741176, 0.647059, 1)
+border_blend = true
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3p4w"]
+bg_color = Color(0.898039, 0.796078, 0.729412, 1)
+expand_margin_top = 12.0
+expand_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3528q"]
+bg_color = Color(0.85098, 0.741176, 0.647059, 1)
+expand_margin_top = 12.0
+expand_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hwab"]
+bg_color = Color(0.898039, 0.796078, 0.729412, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85098, 0.741176, 0.647059, 1)
+border_blend = true
+expand_margin_top = 12.0
+expand_margin_bottom = 12.0
+
+[resource]
+default_font = ExtResource("1_bd2xj")
+default_font_size = 32
+/colors/dark = Color(0.85098, 0.741176, 0.647059, 1)
+/colors/light = Color(0.964706, 0.933333, 0.890196, 1)
+/font_sizes/default = 32
+/font_sizes/header = 64
+Button/colors/font_color = Color(0.964706, 0.933333, 0.890196, 1)
+Button/font_sizes/font_size = 32
+Button/styles/focus = SubResource("StyleBoxFlat_nga2s")
+Button/styles/hover = SubResource("StyleBoxFlat_m3p4w")
+Button/styles/normal = SubResource("StyleBoxFlat_3528q")
+Button/styles/pressed = SubResource("StyleBoxFlat_4hwab")
+Label/colors/font_color = Color(0.85098, 0.741176, 0.647059, 1)

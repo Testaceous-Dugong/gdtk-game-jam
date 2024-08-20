@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://7mkecy11cmva"]
+
+[ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_lk6xo"]
+[ext_resource type="Script" path="res://scenes/scripts/AttackAnimator.gd" id="2_7ovb1"]
+[ext_resource type="Script" path="res://scenes/scripts/MoveAnimator.gd" id="3_jk45j"]
+[ext_resource type="AudioStream" uid="uid://pe32qrjjdbgj" path="res://assets/sfx/move.wav" id="4_o51bs"]
+[ext_resource type="Script" path="res://scenes/ui/stat_display.gd" id="5_qo5km"]
+[ext_resource type="PackedScene" uid="uid://b0efdhxl42xu5" path="res://scenes/ui/sword_icon.tscn" id="6_6t64y"]
+[ext_resource type="PackedScene" uid="uid://cfs5n6fme8yk3" path="res://scenes/ui/heart_icon.tscn" id="6_masa2"]
+[ext_resource type="PackedScene" uid="uid://dsk1sj6po13id" path="res://scenes/ui/empty_heart_icon.tscn" id="8_aceof"]
+
+[node name="Enemy" type="Node2D"]
+process_priority = 10
+y_sort_enabled = true
+script = ExtResource("1_lk6xo")
+
+[node name="AttackAnimator" type="Node2D" parent="."]
+script = ExtResource("2_7ovb1")
+attack_distance = 4.0
+
+[node name="MoveAnimator" type="Node2D" parent="."]
+script = ExtResource("3_jk45j")
+animation_target = NodePath("..")
+
+[node name="MoveAudioSteamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_o51bs")
+
+[node name="HealthDisplay" type="HBoxContainer" parent="."]
+z_index = 10
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.0
+offset_top = -26.0
+offset_right = 19.0
+offset_bottom = -3.0
+grow_horizontal = 2
+alignment = 1
+script = ExtResource("5_qo5km")
+stat_icon = ExtResource("6_masa2")
+missing_stat_icon = ExtResource("8_aceof")
+
+[node name="PowerDisplay" type="HBoxContainer" parent="."]
+z_index = 10
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -16.0
+offset_right = 20.0
+offset_bottom = 7.0
+grow_horizontal = 2
+alignment = 1
+script = ExtResource("5_qo5km")
+stat_icon = ExtResource("6_6t64y")

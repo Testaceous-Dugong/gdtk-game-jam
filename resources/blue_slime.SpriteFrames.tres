@@ -1,0 +1,25 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://bx03yojwp1cxw"]
+
+[ext_resource type="Texture2D" uid="uid://dpuf0rncs780b" path="res://assets/slimes.png" id="1_65040"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqrn6"]
+atlas = ExtResource("1_65040")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rd7tw"]
+atlas = ExtResource("1_65040")
+region = Rect2(16, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqrn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rd7tw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

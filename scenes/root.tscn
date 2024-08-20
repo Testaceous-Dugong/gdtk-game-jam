@@ -1,3 +1,21 @@
-[gd_scene format=3 uid="uid://y8u7ep4h4552"]
+[gd_scene load_steps=3 format=3 uid="uid://y8u7ep4h4552"]
+
+[ext_resource type="PackedScene" uid="uid://0konxo3n6j75" path="res://scenes/game.tscn" id="1_wxyp7"]
+[ext_resource type="PackedScene" uid="uid://bxcdmp2knk87r" path="res://scenes/ui/main_menu.tscn" id="2_c6esc"]
 
 [node name="Root" type="Node"]
+
+[node name="Game" parent="." instance=ExtResource("1_wxyp7")]
+
+[node name="MainMenu" parent="." instance=ExtResource("2_c6esc")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.964706, 0.933333, 0.890196, 1)

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcvhxwjfia4nu"]
+
+[ext_resource type="Script" path="res://scenes/health_pickup.gd" id="1_6s3e2"]
+[ext_resource type="Texture2D" uid="uid://dju46m08cwtpm" path="res://assets/power_ups.png" id="2_jjkg4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_occag"]
+atlas = ExtResource("2_jjkg4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xubsq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_occag")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="HealthPickup" type="Node2D"]
+script = ExtResource("1_6s3e2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xubsq")

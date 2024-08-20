@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnacuw6ij85xw"]
+
+[ext_resource type="Script" path="res://scenes/ui/player_stats.gd" id="1_abv0g"]
+[ext_resource type="Script" path="res://scenes/ui/stat_display.gd" id="2_rsjww"]
+[ext_resource type="PackedScene" uid="uid://ci6xxms1hajcq" path="res://scenes/ui/heart_icon_big.tscn" id="3_6gcql"]
+[ext_resource type="PackedScene" uid="uid://btesxx5jckfxw" path="res://scenes/ui/sword_icon_big.tscn" id="3_w52bm"]
+[ext_resource type="PackedScene" uid="uid://nw8hmtwdjljs" path="res://scenes/ui/empty_heart_icon_big.tscn" id="4_m8m1j"]
+
+[node name="Player" type="VBoxContainer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+offset_bottom = 98.0
+grow_vertical = 2
+scale = Vector2(3, 3)
+script = ExtResource("1_abv0g")
+
+[node name="HealthDisplay" type="HBoxContainer" parent="."]
+layout_mode = 2
+script = ExtResource("2_rsjww")
+stat_icon = ExtResource("3_6gcql")
+missing_stat_icon = ExtResource("4_m8m1j")
+
+[node name="PowerDisplay" type="HBoxContainer" parent="."]
+layout_mode = 2
+script = ExtResource("2_rsjww")
+stat_icon = ExtResource("3_w52bm")
