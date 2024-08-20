@@ -2,15 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://3jbfr0c2fhpo" path="res://assets/icons.png" id="1_dfp21"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dnus3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbimp"]
 atlas = ExtResource("1_dfp21")
-region = Rect2(8, 16, 8, 8)
+region = Rect2(10, 32, 10, 10)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0qafg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dnus3")
+"texture": SubResource("AtlasTexture_mbimp")
 }],
 "loop": true,
 "name": &"default",
