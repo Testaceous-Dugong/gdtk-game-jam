@@ -106,7 +106,7 @@ func apply_power_up(power_up: PowerUp) -> void:
 
 	power_up.queue_free()
 
-func process_attack(incoming_damage: int, _inflict_damage: Callable) -> bool:
+func process_attack(incoming_damage: int, _incoming_direction: Vector2, _inflict_damage: Callable) -> bool:
 	apply_damage(incoming_damage)
 	if health == 0:
 		return true
@@ -138,7 +138,7 @@ func on_collision(entity: Node2D) -> bool:
 	if not entity.has_method(&"process_attack"):
 		return false
 	
-	var killed_entity = entity.process_attack(get_power_level(), apply_damage)
+	var killed_entity = await entity.process_attack(get_power_level(), -direction, apply_damage)
 
 	if health == 0:
 		return false

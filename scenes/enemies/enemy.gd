@@ -166,7 +166,13 @@ func apply_power_up(power_up: PowerUp) -> void:
 
 	power_up.queue_free()
 
-func process_attack(incoming_damage: int, inflict_damage: Callable) -> bool:
+func process_attack(incoming_damage: int, incoming_direction: Vector2, inflict_damage: Callable) -> bool:
+	
+	attack_animator.target = incoming_direction.normalized()
+	animation_player.play(&"attack")
+	var finished_animation = await animation_player.animation_finished
+	assert(finished_animation == &"attack")
+
 	inflict_damage.call(get_power_level())
 
 	apply_damage(incoming_damage)
@@ -197,7 +203,7 @@ func on_collision(entity: Node2D) -> bool:
 		turn_finished.emit.call_deferred()
 		return false
 	
-	var killed_entity = entity.process_attack(get_power_level(), apply_damage)
+	var killed_entity = await entity.process_attack(get_power_level(), -direction, apply_damage)
 
 	if not killed_entity:
 		turn_finished.emit.call_deferred()

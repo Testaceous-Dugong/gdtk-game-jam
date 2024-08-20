@@ -8,6 +8,7 @@ func _process(_delta: float) -> void:
 	if not ready_to_play:
 		return
 	if Input.is_action_just_pressed(&"ui_accept"):
+		ready_to_play = false
 		animation_player.play(&"play")
 
 func _on_play_button_pressed() -> void:
