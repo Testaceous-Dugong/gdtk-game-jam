@@ -29,7 +29,6 @@ layout_mode = 2
 layout_mode = 2
 theme = ExtResource("1_ak2ox")
 theme_type_variation = &"HeaderSmall"
-text = "1"
 script = ExtResource("2_e5lc7")
 
 [node name="Filler" type="Control" parent="Span/VBoxContainer"]

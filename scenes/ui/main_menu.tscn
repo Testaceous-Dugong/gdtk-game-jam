@@ -389,9 +389,6 @@ shortcut_in_tooltip = false
 text = "Play
 "
 
-[node name="ControlsDisplay" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
 [node name="ControlsDisplay" parent="." instance=ExtResource("3_ihsoj")]
 visible = false
 layout_mode = 1

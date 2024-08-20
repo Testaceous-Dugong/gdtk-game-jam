@@ -5,4 +5,4 @@ func _ready() -> void:
 
 
 func on_level_changed(level: int) -> void:
-	text = str(level + 1)
+	text = "Stage %s" % (level + 1)

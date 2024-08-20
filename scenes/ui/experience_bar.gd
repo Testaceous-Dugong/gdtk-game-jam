@@ -19,6 +19,7 @@ var target_experience = 0
 
 
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
+@onready var label = $Label as Label
 
 func _ready() -> void:
 	GlobalMessageBus.register_player.connect(on_player_added.call_deferred)
@@ -31,6 +32,8 @@ func _draw() -> void:
 	var experience = current_experience + progress * get_experience_difference()
 	while experience > level + 1:
 		experience %= level + 1
+	
+	label.text = "lvl%s" % level
 
 	var y_offset = size.y as int - bar_height
 	var bar_size = Vector2i(
@@ -86,20 +89,21 @@ func on_experience_changed(level: int, experience: int) -> void:
 	if level == current_level and experience == current_experience:
 		return
 	current_experience += ceili(progress * get_experience_difference())
-	while current_experience > level + 1:
-		current_experience %= level + 1
+	while current_experience > current_level + 1:
+		current_experience %= current_level + 1
 
-	print(current_level, current_experience, level, experience)
 	progress = 0.0
 	target_level = level
 	target_experience = experience
 	animation_player.play(&"gain_experience")
 
 func reset(_index: int = 0) -> void:
+
 	current_level = 1
 	current_experience = 0
 	target_level = 1
 	target_experience = 0
+
 	queue_redraw()
 
 func get_experience_difference() -> int:

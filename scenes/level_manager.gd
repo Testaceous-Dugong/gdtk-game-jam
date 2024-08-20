@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var levels: LevelSequence
-@export var current_level: int = 0:
+@export var current_level: int = -1:
 	set(value):
 		assert(levels)
 		assert(levels.scenes)

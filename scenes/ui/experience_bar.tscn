@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsw0ige6cjgw8"]
+[gd_scene load_steps=6 format=3 uid="uid://bsw0ige6cjgw8"]
 
 [ext_resource type="Script" path="res://scenes/ui/experience_bar.gd" id="1_jsd3p"]
+[ext_resource type="Theme" uid="uid://crqt4ewny5qxd" path="res://resources/ui_theme.Theme.tres" id="2_xqlw5"]
 
 [sub_resource type="Animation" id="Animation_a0033"]
 length = 0.001
@@ -55,7 +56,11 @@ _data = {
 
 [node name="ExperienceBar" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_jsd3p")
@@ -64,3 +69,19 @@ script = ExtResource("1_jsd3p")
 libraries = {
 "": SubResource("AnimationLibrary_yf5id")
 }
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("2_xqlw5")
+horizontal_alignment = 2
+vertical_alignment = 2
