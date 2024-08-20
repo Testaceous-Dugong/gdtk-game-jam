@@ -1,0 +1,169 @@
+[gd_scene load_steps=13 format=3 uid="uid://br6tjim7r3qbc"]
+
+[ext_resource type="Texture2D" uid="uid://dt8g7d6oiyluu" path="res://assets/keyboard_arrows.png" id="1_ot2ih"]
+[ext_resource type="Texture2D" uid="uid://33iaeahlcjdy" path="res://assets/keyboard_prompts.png" id="2_7k6o6"]
+[ext_resource type="Theme" uid="uid://crqt4ewny5qxd" path="res://resources/ui_theme.Theme.tres" id="3_5sae6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bun1l"]
+atlas = ExtResource("1_ot2ih")
+region = Rect2(128, 0, 32, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fwo4"]
+atlas = ExtResource("1_ot2ih")
+region = Rect2(96, 0, 32, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4gri"]
+atlas = ExtResource("1_ot2ih")
+region = Rect2(32, 0, 32, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0e2te"]
+atlas = ExtResource("1_ot2ih")
+region = Rect2(160, 0, 32, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hef8l"]
+atlas = ExtResource("1_ot2ih")
+region = Rect2(224, 0, 32, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_spyem"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bun1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fwo4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bun1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4gri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bun1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0e2te")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bun1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hef8l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnrw0"]
+atlas = ExtResource("2_7k6o6")
+region = Rect2(125, 144, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1b0kp"]
+atlas = ExtResource("2_7k6o6")
+region = Rect2(137, 144, 11, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_so0a5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnrw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1b0kp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="ControlsDisplay" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 256
+theme_override_constants/margin_top = 256
+theme_override_constants/margin_right = 256
+theme_override_constants/margin_bottom = 256
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Controls" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Movement" type="HBoxContainer" parent="HBoxContainer/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="MovementMargin" type="MarginContainer" parent="HBoxContainer/Controls/Movement"]
+layout_mode = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 33
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 33
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/Controls/Movement/MovementMargin"]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_spyem")
+autoplay = "default"
+frame_progress = 0.605347
+centered = false
+
+[node name="Reset" type="HBoxContainer" parent="HBoxContainer/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="ResetMargin" type="MarginContainer" parent="HBoxContainer/Controls/Reset"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/Controls/Reset/ResetMargin"]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_so0a5")
+autoplay = "default"
+frame_progress = 0.216184
+centered = false
+
+[node name="Lables" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Movement" type="HBoxContainer" parent="HBoxContainer/Lables"]
+layout_mode = 2
+
+[node name="MovementMargin" type="MarginContainer" parent="HBoxContainer/Lables/Movement"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Label" type="Label" parent="HBoxContainer/Lables/Movement/MovementMargin"]
+layout_mode = 2
+theme = ExtResource("3_5sae6")
+theme_type_variation = &"HeaderSmall"
+text = "Move"
+
+[node name="Reset" type="HBoxContainer" parent="HBoxContainer/Lables"]
+layout_mode = 2
+
+[node name="ResetMargin" type="MarginContainer" parent="HBoxContainer/Lables/Reset"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+
+[node name="Label" type="Label" parent="HBoxContainer/Lables/Reset/ResetMargin"]
+layout_mode = 2
+theme = ExtResource("3_5sae6")
+theme_type_variation = &"HeaderSmall"
+text = "Reset
+"

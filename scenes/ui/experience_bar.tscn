@@ -2,6 +2,21 @@
 
 [ext_resource type="Script" path="res://scenes/ui/experience_bar.gd" id="1_jsd3p"]
 
+[sub_resource type="Animation" id="Animation_a0033"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_4tvkl"]
 resource_name = "gain_experience"
 length = 0.2
@@ -30,21 +45,6 @@ tracks/1/keys = {
 "args": [],
 "method": &"set_to_target"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_a0033"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:progress")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yf5id"]
