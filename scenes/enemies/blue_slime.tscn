@@ -18,14 +18,16 @@ script = ExtResource("2_28xuu")
 y_sort_enabled = true
 sprite_frames = ExtResource("4_ik10e")
 
-[node name="XPSprite" type="AnimatedSprite2D" parent="AnimatedSprite2D" index="0"]
+[node name="XPBalls" type="Node2D" parent="." index="2"]
+
+[node name="XPSprite" type="AnimatedSprite2D" parent="XPBalls" index="0"]
 z_index = 10
 sprite_frames = ExtResource("5_ort0c")
 
-[node name="AttackAnimator" parent="." index="2"]
+[node name="AttackAnimator" parent="." index="3"]
 animation_target = NodePath("../AnimatedSprite2D")
 
-[node name="MoveAudioSteamPlayer" parent="." index="4"]
+[node name="MoveAudioSteamPlayer" parent="." index="5"]
 volume_db = -4.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="on_animation_finished"]

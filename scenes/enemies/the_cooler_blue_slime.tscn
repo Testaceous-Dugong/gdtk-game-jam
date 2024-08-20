@@ -20,24 +20,26 @@ script = ExtResource("3_ccowr")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = ExtResource("4_xaide")
 
-[node name="XPSprite" type="AnimatedSprite2D" parent="AnimatedSprite2D" index="0"]
+[node name="XPBalls" type="Node2D" parent="." index="2"]
+
+[node name="XPSprite" type="AnimatedSprite2D" parent="XPBalls" index="0"]
 z_index = 10
 position = Vector2(-2, 0)
 sprite_frames = ExtResource("5_ufyog")
 
-[node name="XPSprite2" type="AnimatedSprite2D" parent="AnimatedSprite2D" index="1"]
+[node name="XPSprite2" type="AnimatedSprite2D" parent="XPBalls" index="1"]
 z_index = 10
 position = Vector2(2, 0)
 sprite_frames = ExtResource("5_ufyog")
 
-[node name="AttackAnimator" parent="." index="2"]
+[node name="AttackAnimator" parent="." index="3"]
 visible = false
 animation_target = NodePath("../AnimatedSprite2D")
 
-[node name="MoveAnimator" parent="." index="3"]
+[node name="MoveAnimator" parent="." index="4"]
 visible = false
 
-[node name="MoveAudioSteamPlayer" parent="." index="4"]
+[node name="MoveAudioSteamPlayer" parent="." index="5"]
 visible = false
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="on_animation_finished"]
