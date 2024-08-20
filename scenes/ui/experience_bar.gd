@@ -6,7 +6,6 @@ extends Control
 @export var progress = 0.0:
 	set(value):
 		progress = clampf(value, 0.0, 1.0)
-		print(progress)
 		queue_redraw()
 
 var players = {}

@@ -18,7 +18,6 @@ func _process(_delta: float) -> void:
 		animation_player.speed_scale = 20
 		await animation_player.animation_finished
 		animation_player.speed_scale = 1
-		print(animation_player.speed_scale)
 
 	match state:
 		UIState.PLAY_PRESSED:

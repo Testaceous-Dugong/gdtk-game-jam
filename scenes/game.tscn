@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://0konxo3n6j75"]
+[gd_scene load_steps=9 format=3 uid="uid://0konxo3n6j75"]
 
 [ext_resource type="Script" path="res://scenes/level_manager.gd" id="1_32orn"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_cwnwm"]
@@ -55,6 +55,30 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BlankingLayer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BlankingLayer/ScreenBlank:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_odpyt"]
 resource_name = "fade_in"
@@ -108,10 +132,53 @@ tracks/3/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_380kw"]
+resource_name = "transition"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlankingLayer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlankingLayer/ScreenBlank:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LevelManager")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"advance_level"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nmxd5"]
 _data = {
 "RESET": SubResource("Animation_ww6tk"),
-"fade_in": SubResource("Animation_odpyt")
+"fade_in": SubResource("Animation_odpyt"),
+"transition": SubResource("Animation_380kw")
 }
 
 [node name="Game" type="Node2D"]
@@ -129,3 +196,16 @@ script = ExtResource("1_32orn")
 levels = ExtResource("2_1paij")
 
 [node name="UI" parent="." instance=ExtResource("3_s5gnt")]
+
+[node name="BlankingLayer" type="CanvasLayer" parent="."]
+layer = 10
+visible = false
+
+[node name="ScreenBlank" type="ColorRect" parent="BlankingLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.964706, 0.933333, 0.890196, 1)
