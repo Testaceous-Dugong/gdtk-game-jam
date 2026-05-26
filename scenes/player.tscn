@@ -1,11 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://1d22jkgxwvbu"]
+[gd_scene format=3 uid="uid://1d22jkgxwvbu"]
 
 [ext_resource type="Texture2D" uid="uid://h8l6w6pb4ohq" path="res://assets/player.png" id="1_388vq"]
-[ext_resource type="Script" path="res://scenes/player.gd" id="1_jg0ce"]
-[ext_resource type="Script" path="res://scenes/scripts/EntityAnimationPlayer.gd" id="2_aep0u"]
+[ext_resource type="Script" uid="uid://batm5dhpn7mjb" path="res://scenes/player.gd" id="1_jg0ce"]
+[ext_resource type="Script" uid="uid://d2wufehlcs46k" path="res://nodes/entity_animation_player.gd" id="2_aep0u"]
 [ext_resource type="AudioStream" uid="uid://pe32qrjjdbgj" path="res://assets/sfx/move.wav" id="2_rggxd"]
-[ext_resource type="Script" path="res://scenes/scripts/AttackAnimator.gd" id="4_vuiua"]
-[ext_resource type="Script" path="res://scenes/scripts/MoveAnimator.gd" id="5_gywum"]
+[ext_resource type="Script" uid="uid://d3d6cm5bpahm3" path="res://nodes/attack_animator.gd" id="4_vuiua"]
+[ext_resource type="Script" uid="uid://bhm6c8lg3sgal" path="res://nodes/move_animator.gd" id="5_gywum"]
 
 [sub_resource type="Animation" id="Animation_4ol1a"]
 length = 0.001

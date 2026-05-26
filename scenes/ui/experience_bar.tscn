@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsw0ige6cjgw8"]
+[gd_scene format=3 uid="uid://bsw0ige6cjgw8"]
 
-[ext_resource type="Script" path="res://scenes/ui/experience_bar.gd" id="1_jsd3p"]
-[ext_resource type="Theme" uid="uid://crqt4ewny5qxd" path="res://resources/ui_theme.Theme.tres" id="2_xqlw5"]
+[ext_resource type="Script" uid="uid://duxm5g2yifydq" path="res://scenes/ui/experience_bar.gd" id="1_jsd3p"]
+[ext_resource type="Theme" uid="uid://crqt4ewny5qxd" path="res://resources/default.Theme.tres" id="2_xqlw5"]
 
 [sub_resource type="Animation" id="Animation_a0033"]
 length = 0.001

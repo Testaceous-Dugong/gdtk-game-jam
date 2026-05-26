@@ -1,0 +1,291 @@
+[gd_scene format=3 uid="uid://br6tjim7r3qbc"]
+
+[ext_resource type="Script" uid="uid://bbhm1tv2024t6" path="res://scenes/controls_tutorial.gd" id="1_8q1a0"]
+[ext_resource type="Texture2D" uid="uid://dt8g7d6oiyluu" path="res://assets/keyboard_arrows.png" id="1_de41g"]
+[ext_resource type="Texture2D" uid="uid://33iaeahlcjdy" path="res://assets/keyboard_prompts.png" id="2_8q1a0"]
+[ext_resource type="Theme" uid="uid://crqt4ewny5qxd" path="res://resources/default.Theme.tres" id="3_eg5vw"]
+
+[sub_resource type="Animation" id="Animation_pmi1a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_oud1b"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_c06if"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p6s4f"]
+_data = {
+&"RESET": SubResource("Animation_pmi1a"),
+&"fade_in": SubResource("Animation_oud1b"),
+&"fade_out": SubResource("Animation_c06if")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bun1l"]
+atlas = ExtResource("1_de41g")
+region = Rect2(128, 0, 32, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fwo4"]
+atlas = ExtResource("1_de41g")
+region = Rect2(96, 0, 32, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4gri"]
+atlas = ExtResource("1_de41g")
+region = Rect2(32, 0, 32, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0e2te"]
+atlas = ExtResource("1_de41g")
+region = Rect2(160, 0, 32, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hef8l"]
+atlas = ExtResource("1_de41g")
+region = Rect2(224, 0, 32, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_spyem"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bun1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fwo4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bun1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4gri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bun1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0e2te")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bun1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hef8l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnrw0"]
+atlas = ExtResource("2_8q1a0")
+region = Rect2(125, 144, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1b0kp"]
+atlas = ExtResource("2_8q1a0")
+region = Rect2(137, 144, 11, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_so0a5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnrw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1b0kp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="InputEventAction" id="InputEventAction_de41g"]
+action = &"ui_select"
+
+[sub_resource type="Shortcut" id="Shortcut_8q1a0"]
+events = [SubResource("InputEventAction_de41g")]
+
+[node name="ControlsTutorial" type="MarginContainer" unique_id=1511506131]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 256
+theme_override_constants/margin_top = 256
+theme_override_constants/margin_right = 256
+theme_override_constants/margin_bottom = 256
+script = ExtResource("1_8q1a0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=670066360]
+libraries/ = SubResource("AnimationLibrary_p6s4f")
+autoplay = &"fade_in"
+playback_auto_capture_transition_type = 4
+playback_auto_capture_ease_type = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=567709725]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1772674530]
+layout_mode = 2
+alignment = 1
+
+[node name="Controls" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=792181262]
+layout_mode = 2
+alignment = 1
+
+[node name="Movement" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Controls" unique_id=2136822739]
+layout_mode = 2
+alignment = 1
+
+[node name="MovementMargin" type="MarginContainer" parent="VBoxContainer/HBoxContainer/Controls/Movement" unique_id=2013112154]
+layout_mode = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 33
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 33
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/HBoxContainer/Controls/Movement/MovementMargin" unique_id=1796048182]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_spyem")
+autoplay = "default"
+frame_progress = 0.605347
+centered = false
+
+[node name="Reset" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Controls" unique_id=770160278]
+layout_mode = 2
+alignment = 1
+
+[node name="ResetMargin" type="MarginContainer" parent="VBoxContainer/HBoxContainer/Controls/Reset" unique_id=232591352]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/HBoxContainer/Controls/Reset/ResetMargin" unique_id=20661892]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_so0a5")
+autoplay = "default"
+frame_progress = 0.216184
+centered = false
+
+[node name="Lables" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=583252175]
+layout_mode = 2
+alignment = 1
+
+[node name="Movement" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Lables" unique_id=1945605973]
+layout_mode = 2
+
+[node name="MovementMargin" type="MarginContainer" parent="VBoxContainer/HBoxContainer/Lables/Movement" unique_id=614475391]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Lables/Movement/MovementMargin" unique_id=1281482233]
+layout_mode = 2
+theme = ExtResource("3_eg5vw")
+theme_type_variation = &"HeaderSmall"
+text = "Move"
+
+[node name="Reset" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Lables" unique_id=562115611]
+layout_mode = 2
+
+[node name="ResetMargin" type="MarginContainer" parent="VBoxContainer/HBoxContainer/Lables/Reset" unique_id=2005587577]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Lables/Reset/ResetMargin" unique_id=1793377471]
+layout_mode = 2
+theme = ExtResource("3_eg5vw")
+theme_type_variation = &"HeaderSmall"
+text = "Reset
+"
+
+[node name="Continue" type="HBoxContainer" parent="VBoxContainer" unique_id=1060931860]
+layout_mode = 2
+alignment = 1
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer/Continue" unique_id=1291930184]
+unique_name_in_owner = true
+layout_mode = 2
+shortcut = SubResource("Shortcut_8q1a0")
+shortcut_in_tooltip = false
+text = "Press Enter to continue..."
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
+[connection signal="pressed" from="VBoxContainer/Continue/ContinueButton" to="AnimationPlayer" method="play" binds= [&"fade_out"]]

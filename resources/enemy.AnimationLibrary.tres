@@ -1,4 +1,4 @@
-[gd_resource type="AnimationLibrary" load_steps=5 format=3 uid="uid://bl7yuvqcq1ylr"]
+[gd_resource type="AnimationLibrary" format=3 uid="uid://bl7yuvqcq1ylr"]
 
 [sub_resource type="Animation" id="Animation_5rppm"]
 length = 0.001
@@ -149,8 +149,8 @@ tracks/0/keys = {
 
 [resource]
 _data = {
-"RESET": SubResource("Animation_5rppm"),
-"attack": SubResource("Animation_vt7qf"),
-"death": SubResource("Animation_1dpyc"),
-"move": SubResource("Animation_7xu0y")
+&"RESET": SubResource("Animation_5rppm"),
+&"attack": SubResource("Animation_vt7qf"),
+&"death": SubResource("Animation_1dpyc"),
+&"move": SubResource("Animation_7xu0y")
 }

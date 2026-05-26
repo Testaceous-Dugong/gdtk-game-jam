@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=4 uid="uid://biac53a1bmduu"]
+[gd_scene format=4 uid="uid://biac53a1bmduu"]
 
-[ext_resource type="Script" path="res://scenes/scripts/BossScaler.gd" id="1_uppnp"]
+[ext_resource type="Script" uid="uid://bkiqawkkmbe3w" path="res://nodes/boss_scaler.gd" id="1_uppnp"]
 [ext_resource type="TileSet" uid="uid://ccs65fvhsl4f6" path="res://resources/puzzle.TileSet.tres" id="2_8wc0b"]
-[ext_resource type="Script" path="res://scenes/tile_map_layer.gd" id="3_esihe"]
+[ext_resource type="Script" uid="uid://0alktlnrg8ev" path="res://scenes/tile_map_layer.gd" id="3_esihe"]
 
 [node name="Level5" type="Node2D"]
 

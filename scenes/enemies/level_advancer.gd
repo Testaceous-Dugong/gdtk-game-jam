@@ -5,4 +5,5 @@ extends Node
 func on_animation_finished(animation_name: StringName) -> void:
 	if animation_name != advance_animation_name:
 		return
+	print("Emitting advance level signal")
 	GlobalMessageBus.advance_level.emit()

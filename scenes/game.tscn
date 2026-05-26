@@ -1,16 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://0konxo3n6j75"]
+[gd_scene format=3 uid="uid://0konxo3n6j75"]
 
-[ext_resource type="Script" path="res://scenes/level_manager.gd" id="1_32orn"]
-[ext_resource type="Script" path="res://scenes/game.gd" id="1_cwnwm"]
-[ext_resource type="Resource" uid="uid://cwiklagahlavs" path="res://resources/levels.LevelSequence.tres" id="2_1paij"]
-[ext_resource type="PackedScene" uid="uid://cxgewsw17s7wg" path="res://scenes/ui/game.tscn" id="3_s5gnt"]
+[ext_resource type="Script" uid="uid://jrjujrviu8eh" path="res://scenes/game.gd" id="1_cwnwm"]
+[ext_resource type="Theme" uid="uid://crqt4ewny5qxd" path="res://resources/default.Theme.tres" id="2_iywne"]
+[ext_resource type="Script" uid="uid://b6jfdi7jg8xh7" path="res://scenes/ui/level_count_display.gd" id="3_p57ef"]
+[ext_resource type="Script" uid="uid://cado3toq8ymn7" path="res://scenes/ui/player_display.gd" id="4_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://bsw0ige6cjgw8" path="res://scenes/ui/experience_bar.tscn" id="5_gee14"]
 
 [sub_resource type="Animation" id="Animation_ww6tk"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LevelManager:modulate")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -22,7 +23,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("UI/Span:modulate")
+tracks/1/path = NodePath("UI/MarginContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -31,62 +32,13 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("LevelManager:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("UI:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("BlankingLayer:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("BlankingLayer/ScreenBlank:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_odpyt"]
 resource_name = "fade_in"
-length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LevelManager:modulate")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -98,38 +50,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("UI/Span:modulate")
+tracks/1/path = NodePath("UI/MarginContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("LevelManager:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("UI:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_380kw"]
@@ -138,74 +66,118 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BlankingLayer:visible")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("BlankingLayer/ScreenBlank:modulate")
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("LevelManager")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.1),
+"times": PackedFloat32Array(0.2),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"advance_level"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/MarginContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nmxd5"]
 _data = {
-"RESET": SubResource("Animation_ww6tk"),
-"fade_in": SubResource("Animation_odpyt"),
-"transition": SubResource("Animation_380kw")
+&"RESET": SubResource("Animation_ww6tk"),
+&"fade_in": SubResource("Animation_odpyt"),
+&"transition": SubResource("Animation_380kw")
 }
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" unique_id=1467058288]
 script = ExtResource("1_cwnwm")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_nmxd5")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1662504733]
+libraries/ = SubResource("AnimationLibrary_nmxd5")
 
-[node name="LevelManager" type="Node2D" parent="."]
-visible = false
-y_sort_enabled = true
-script = ExtResource("1_32orn")
-levels = ExtResource("2_1paij")
+[node name="Levels" type="Node2D" parent="." unique_id=1726015148]
+unique_name_in_owner = true
 
-[node name="UI" parent="." instance=ExtResource("3_s5gnt")]
+[node name="Level1" parent="Levels" unique_id=1679120933 instance_placeholder="res://scenes/levels/level_1_level_up.tscn"]
 
-[node name="BlankingLayer" type="CanvasLayer" parent="."]
-layer = 10
-visible = false
+[node name="Level2" parent="Levels" unique_id=157466661 instance_placeholder="res://scenes/levels/level_2_block_the_boss.tscn"]
 
-[node name="ScreenBlank" type="ColorRect" parent="BlankingLayer"]
-modulate = Color(1, 1, 1, 0)
+[node name="Level3" parent="Levels" unique_id=1350481380 instance_placeholder="res://scenes/levels/level_3_swing_around.tscn"]
+
+[node name="Level4" parent="Levels" unique_id=1678887325 instance_placeholder="res://scenes/levels/level_4_slimes_damage_boss.tscn"]
+
+[node name="Level5" parent="Levels" unique_id=1166829452 instance_placeholder="res://scenes/levels/level_5_big_moves.tscn"]
+
+[node name="Level6" parent="Levels" unique_id=1004536425 instance_placeholder="res://scenes/levels/level_6_a_more_dangerous_slime.tscn"]
+
+[node name="Level7" parent="Levels" unique_id=1600491663 instance_placeholder="res://scenes/levels/level_7_player_break_blocks.tscn"]
+
+[node name="Level8" parent="Levels" unique_id=1493900607 instance_placeholder="res://scenes/levels/level_8_partial_break.tscn"]
+
+[node name="Level9" parent="Levels" unique_id=940806214 instance_placeholder="res://scenes/levels/level_9_the_path_of_most_resistance.tscn"]
+
+[node name="Level10" parent="Levels" unique_id=667599869 instance_placeholder="res://scenes/levels/level_10_long_journey.tscn"]
+
+[node name="Level11" parent="Levels" unique_id=1252356729 instance_placeholder="res://scenes/levels/level_11_breaking_in.tscn"]
+
+[node name="Level12" parent="Levels" unique_id=1263161148 instance_placeholder="res://scenes/levels/level_12_making_use_of_time.tscn"]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1781155146]
+
+[node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=235929992]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.964706, 0.933333, 0.890196, 1)
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer" unique_id=1242824768]
+layout_mode = 2
+
+[node name="Top" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer" unique_id=824342086]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/MarginContainer/VBoxContainer/Top" unique_id=2010635596]
+layout_mode = 2
+theme = ExtResource("2_iywne")
+theme_type_variation = &"HeaderSmall"
+script = ExtResource("3_p57ef")
+
+[node name="Filler" type="Control" parent="UI/MarginContainer/VBoxContainer" unique_id=693694102]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Bottom" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer" unique_id=383594002]
+layout_mode = 2
+
+[node name="PlayerDisplay" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer/Bottom" unique_id=842934828]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_u5sy4")
+
+[node name="ExperienceBar" parent="UI/MarginContainer/VBoxContainer/Bottom" unique_id=501351038 instance=ExtResource("5_gee14")]
+layout_mode = 2

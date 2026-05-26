@@ -1,55 +1,62 @@
-[gd_scene load_steps=9 format=3 uid="uid://7mkecy11cmva"]
+[gd_scene format=3 uid="uid://7mkecy11cmva"]
 
-[ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_lk6xo"]
-[ext_resource type="Script" path="res://scenes/scripts/AttackAnimator.gd" id="2_7ovb1"]
-[ext_resource type="Script" path="res://scenes/scripts/MoveAnimator.gd" id="3_jk45j"]
+[ext_resource type="Script" uid="uid://ccys6s76q1y26" path="res://scenes/enemies/enemy.gd" id="1_lk6xo"]
+[ext_resource type="Script" uid="uid://d3d6cm5bpahm3" path="res://nodes/attack_animator.gd" id="2_7ovb1"]
+[ext_resource type="Script" uid="uid://bhm6c8lg3sgal" path="res://nodes/move_animator.gd" id="3_jk45j"]
 [ext_resource type="AudioStream" uid="uid://pe32qrjjdbgj" path="res://assets/sfx/move.wav" id="4_o51bs"]
-[ext_resource type="Script" path="res://scenes/ui/stat_display.gd" id="5_qo5km"]
-[ext_resource type="PackedScene" uid="uid://b0efdhxl42xu5" path="res://scenes/ui/sword_icon.tscn" id="6_6t64y"]
-[ext_resource type="PackedScene" uid="uid://cfs5n6fme8yk3" path="res://scenes/ui/heart_icon.tscn" id="6_masa2"]
-[ext_resource type="PackedScene" uid="uid://dsk1sj6po13id" path="res://scenes/ui/empty_heart_icon.tscn" id="8_aceof"]
+[ext_resource type="Script" uid="uid://ce2lxtx3j842v" path="res://nodes/controls/stat_display.gd" id="5_qo5km"]
+[ext_resource type="Texture2D" uid="uid://3jbfr0c2fhpo" path="res://assets/icons.png" id="8_n7575"]
 
-[node name="Enemy" type="Node2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nb6gf"]
+atlas = ExtResource("8_n7575")
+region = Rect2(0, 32, 10, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jt03m"]
+atlas = ExtResource("8_n7575")
+region = Rect2(20, 32, 10, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qch6t"]
+atlas = ExtResource("8_n7575")
+region = Rect2(10, 32, 10, 10)
+filter_clip = true
+
+[node name="Enemy" type="Node2D" unique_id=1461670133]
 process_priority = 10
 y_sort_enabled = true
 script = ExtResource("1_lk6xo")
 
-[node name="AttackAnimator" type="Node2D" parent="."]
+[node name="AttackAnimator" type="Node2D" parent="." unique_id=1926251096]
 script = ExtResource("2_7ovb1")
 attack_distance = 4.0
 
-[node name="MoveAnimator" type="Node2D" parent="."]
+[node name="MoveAnimator" type="Node2D" parent="." unique_id=482749727]
 script = ExtResource("3_jk45j")
 animation_target = NodePath("..")
 
-[node name="MoveAudioSteamPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="MoveAudioSteamPlayer" type="AudioStreamPlayer2D" parent="." unique_id=276290066]
 stream = ExtResource("4_o51bs")
 
-[node name="HealthDisplay" type="HBoxContainer" parent="."]
+[node name="HealthDisplay" type="MarginContainer" parent="." unique_id=2127632096]
 z_index = 10
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -21.0
 offset_top = -26.0
-offset_right = 19.0
-offset_bottom = -3.0
+offset_bottom = -26.0
 grow_horizontal = 2
-alignment = 1
 script = ExtResource("5_qo5km")
-stat_icon = ExtResource("6_masa2")
-missing_stat_icon = ExtResource("8_aceof")
+stat_icon = SubResource("AtlasTexture_nb6gf")
+missing_stat_icon = SubResource("AtlasTexture_jt03m")
+metadata/_custom_type_script = "uid://ce2lxtx3j842v"
 
-[node name="PowerDisplay" type="HBoxContainer" parent="."]
+[node name="PowerDisplay" type="MarginContainer" parent="." unique_id=1639777744]
 z_index = 10
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
 offset_top = -16.0
-offset_right = 20.0
-offset_bottom = 7.0
+offset_bottom = -16.0
 grow_horizontal = 2
-alignment = 1
 script = ExtResource("5_qo5km")
-stat_icon = ExtResource("6_6t64y")
+stat_icon = SubResource("AtlasTexture_qch6t")
+metadata/_custom_type_script = "uid://ce2lxtx3j842v"

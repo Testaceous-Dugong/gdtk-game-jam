@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="LevelSequence" load_steps=14 format=3 uid="uid://cwiklagahlavs"]
+[gd_resource type="Resource" script_class="LevelSequence" format=3 uid="uid://cwiklagahlavs"]
 
 [ext_resource type="PackedScene" uid="uid://bpyujqxiiiekt" path="res://scenes/levels/level_1_level_up.tscn" id="1_2xvg4"]
-[ext_resource type="Script" path="res://resources/custom/LevelSequence.gd" id="1_q7ktp"]
+[ext_resource type="Script" uid="uid://df0t4cd5orflq" path="res://resources/custom/LevelSequence.gd" id="1_q7ktp"]
 [ext_resource type="PackedScene" uid="uid://cjwbx3aa6svs5" path="res://scenes/levels/level_2_block_the_boss.tscn" id="2_ho8vv"]
 [ext_resource type="PackedScene" uid="uid://c6tgrah0e563q" path="res://scenes/levels/level_3_swing_around.tscn" id="3_5a8b8"]
 [ext_resource type="PackedScene" uid="uid://d0i08qfu4a5u6" path="res://scenes/levels/level_4_slimes_damage_boss.tscn" id="4_fl3t6"]

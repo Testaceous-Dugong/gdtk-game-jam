@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://d37yyk3dvyg4q"]
+
+[ext_resource type="Script" uid="uid://clk3188illge3" path="res://autoloads/game_flow_manager.gd" id="1_aeogp"]
+
+[node name="GameFlowManager" type="Node" unique_id=1126313112]
+script = ExtResource("1_aeogp")
+
+[node name="MainMenu" parent="." unique_id=80606100 instance_placeholder="res://scenes/main_menu.tscn"]
+unique_name_in_owner = true
+offset_left = 400.0
+offset_right = 400.0
+
+[node name="ControlsTutorial" parent="." unique_id=1511506131 instance_placeholder="res://scenes/controls_tutorial.tscn"]
+unique_name_in_owner = true
+
+[node name="Game" parent="." unique_id=219781683 instance_placeholder="res://scenes/game.tscn"]
+unique_name_in_owner = true
+
+[connection signal="ready" from="." to="." method="change_to_main_menu"]

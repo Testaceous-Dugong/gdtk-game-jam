@@ -8,17 +8,22 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="GDTK Game Jam"
-run/main_scene="res://scenes/root.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+run/main_scene="uid://knwbbjaufexv"
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
 [autoload]
 
-GlobalMessageBus="*res://scenes/autoloads/GlobalMessageBus.gd"
-MusicPlayer="*res://scenes/autoloads/MusicPlayer.tscn"
+GlobalMessageBus="*res://autoloads/GlobalMessageBus.gd"
+MusicPlayer="*res://autoloads/MusicPlayer.tscn"
+GameFlowManager="*uid://d37yyk3dvyg4q"
 
 [display]
 
@@ -32,6 +37,10 @@ project/assembly_name="GDTKGameJam"
 [global_group]
 
 player=""
+
+[gui]
+
+theme/custom="uid://crqt4ewny5qxd"
 
 [input]
 
@@ -73,3 +82,4 @@ skip={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0.9647059, 0.93333334, 0.8901961, 1)

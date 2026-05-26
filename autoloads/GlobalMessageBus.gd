@@ -11,8 +11,6 @@ signal advance_level()
 
 signal restart_level()
 
-signal set_level(index: int)
-
 signal level_changed(index: int)
 
 func _ready() -> void:
@@ -26,7 +24,5 @@ func _ready() -> void:
 	assert(advance_level)
 
 	assert(restart_level)
-
-	assert(set_level)
 
 	assert(level_changed)
